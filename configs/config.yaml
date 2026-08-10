@@ -1,0 +1,27 @@
+
+model:
+  name: "Qwen/Qwen2.5-7B-Instruct"
+  torch_dtype: "float16"
+  max_new_tokens: 256
+
+orchestration:
+  order:
+    - planner
+    - critic
+    - optimizer
+    - verifier
+  max_rounds: 1
+
+agents:
+  planner:
+    temperature: 0.7
+    top_p: 0.9
+  critic:
+    temperature: 0.2
+    top_p: 0.9
+  optimizer:
+    temperature: 0.8
+    top_p: 0.95
+  verifier:
+    temperature: 0.1
+    top_p: 0.8
