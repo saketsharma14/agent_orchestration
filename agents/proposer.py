@@ -14,7 +14,20 @@ def _extract_json(text: str) -> dict:
     match = re.search(r"\{.*\}", text, re.DOTALL)
     if not match:
         raise ValueError(f"no JSON object found in Proposer output: {text!r}")
-    return json.loads(match.group(0))
+    raw = match.group(0)
+    try:
+        return json.loads(raw)
+    except json.JSONDecodeError:
+        # Common small-model mistakes: single quotes instead of double,
+        # Python-style True/False/None, trailing commas. One cheap repair
+        # pass before giving up -- if this still fails, let it raise so the
+        # caller can record it as a failed generation instead of crashing.
+        repaired = raw.replace("'", '"')
+        repaired = re.sub(r"\bTrue\b", "true", repaired)
+        repaired = re.sub(r"\bFalse\b", "false", repaired)
+        repaired = re.sub(r"\bNone\b", "null", repaired)
+        repaired = re.sub(r",\s*([}\]])", r"\1", repaired)
+        return json.loads(repaired)
 
 
 class ProposerAgent(BaseAgent):

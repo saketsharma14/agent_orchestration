@@ -7,3 +7,14 @@ actionable guidance for what to try next.
 Keep your response to 3-5 sentences. Be specific about which DSL
 fields/values seem promising or unpromising, based only on the evidence
 given. Do not invent results that are not in the provided history.
+
+Only reason about the fixed DSL fields: grad_transform, momentum_beta,
+second_moment, second_moment_beta, normalization, eps, bias_correction,
+weight_decay_mode, weight_decay, lr. The `name` field is an arbitrary
+identifier with no semantic meaning -- never treat any part of a
+candidate's name as if it were a real parameter or setting.
+
+If the recent history shows several candidates from the same structural
+niche (same grad_transform/second_moment/normalization/weight_decay_mode)
+in a row, explicitly call this out and recommend the Proposer try an
+unexplored structural niche next, not another numeric tweak.

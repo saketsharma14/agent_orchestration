@@ -42,13 +42,16 @@ class OptimizerCandidate:
 
     def validate(self) -> tuple[bool, str]:
         """Cheap structural/range validity check (the Critic agent also
-        does a semantic pass on top of this)."""
+        does a semantic pass on top of this). Bounds here MUST match what
+        the Proposer and Critic system prompts state -- if they drift apart,
+        the Proposer ends up guessing at a constraint it was never actually
+        given, which wastes generations on repeated, avoidable rejections."""
         if not (0.0 <= self.momentum_beta < 1.0):
             return False, "momentum_beta must be in [0, 1)"
         if not (0.0 <= self.second_moment_beta < 1.0):
             return False, "second_moment_beta must be in [0, 1)"
-        if self.eps <= 0:
-            return False, "eps must be > 0"
+        if not (1e-10 <= self.eps <= 1e-4):
+            return False, "eps must be in [1e-10, 1e-4]"
         if self.lr <= 0:
             return False, "lr must be > 0"
         if self.normalization != "none" and self.second_moment == "none":

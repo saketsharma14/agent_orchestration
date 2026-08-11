@@ -20,6 +20,7 @@ from tasks.fitness import score
 REPO_ROOT = str(Path(__file__).resolve().parent.parent)
 REFLECT_EVERY = 5
 N_GENERATIONS = 30
+ARCHIVE_PATH = str(Path(__file__).resolve().parent.parent / "archive_log.json")
 
 
 def seed_archive(archive: Archive) -> None:
@@ -39,6 +40,7 @@ def seed_archive(archive: Archive) -> None:
 def run_search(n_generations: int = N_GENERATIONS) -> Archive:
     archive = Archive()
     seed_archive(archive)
+    archive.save(ARCHIVE_PATH)
 
     proposer = ProposerAgent()
     critic = CriticAgent()
@@ -48,27 +50,47 @@ def run_search(n_generations: int = N_GENERATIONS) -> Archive:
     for gen in range(n_generations):
         print(f"--- generation {gen} ---")
 
-        candidate = proposer.propose(archive.summary_for_proposer(), guidance)
-        valid, reason = critic.review(candidate)
+        try:
+            candidate = proposer.propose(archive.summary_for_proposer(), guidance)
+        except Exception as e:
+            # Malformed LLM output (bad JSON, missing fields, etc.) should
+            # cost you one generation, not the whole run. Log it as a
+            # skipped generation and keep going.
+            print(f"proposer failed, skipping generation: {e}")
+            archive.save(ARCHIVE_PATH)
+            continue
+
+        try:
+            valid, reason = critic.review(candidate)
+        except Exception as e:
+            print(f"critic failed, skipping generation: {e}")
+            archive.save(ARCHIVE_PATH)
+            continue
 
         if not valid:
             archive.add(ArchiveEntry(candidate, -999.0, {}, valid=False, note=reason))
             print(f"rejected by critic: {reason}")
+            archive.save(ARCHIVE_PATH)
             continue
 
         result = run_candidate(candidate, REPO_ROOT)
         if not result.success:
             archive.add(ArchiveEntry(candidate, -999.0, {}, valid=False, note=result.error))
             print(f"execution failed: {result.error}")
+            archive.save(ARCHIVE_PATH)
             continue
 
         fit = score(candidate, result.metrics)
         archive.add(ArchiveEntry(candidate, fit.scalar, fit.vector, valid=True))
         print(f"fitness={fit.scalar:.4f} vector={fit.vector}")
+        archive.save(ARCHIVE_PATH)
 
         if (gen + 1) % REFLECT_EVERY == 0:
-            guidance = reflector.reflect(archive.summary_for_reflector())
-            print(f"reflector guidance: {guidance}")
+            try:
+                guidance = reflector.reflect(archive.summary_for_reflector())
+                print(f"reflector guidance: {guidance}")
+            except Exception as e:
+                print(f"reflector failed, keeping previous guidance: {e}")
 
     return archive
 
