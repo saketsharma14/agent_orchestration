@@ -2,7 +2,7 @@
   {
     "seed_family": "adam_seed",
     "lr": 0.0003,
-    "fitness_scalar": 0.512,
+    "fitness_scalar": 0.5119999999999999,
     "valid": true,
     "note": ""
   },
@@ -16,14 +16,14 @@
   {
     "seed_family": "adam_seed",
     "lr": 0.003,
-    "fitness_scalar": 0.754,
+    "fitness_scalar": 0.7529999999999999,
     "valid": true,
     "note": ""
   },
   {
     "seed_family": "adamw_seed",
     "lr": 0.0003,
-    "fitness_scalar": 0.512,
+    "fitness_scalar": 0.5119999999999999,
     "valid": true,
     "note": ""
   },
@@ -37,42 +37,42 @@
   {
     "seed_family": "adamw_seed",
     "lr": 0.003,
-    "fitness_scalar": 0.754,
+    "fitness_scalar": 0.7539999999999999,
     "valid": true,
     "note": ""
   },
   {
     "seed_family": "rmsprop_seed",
     "lr": 0.003,
-    "fitness_scalar": 0.8309999999999998,
+    "fitness_scalar": 0.831,
     "valid": true,
     "note": ""
   },
   {
     "seed_family": "rmsprop_seed",
     "lr": 0.01,
-    "fitness_scalar": 0.765,
+    "fitness_scalar": 0.7610000000000001,
     "valid": true,
     "note": ""
   },
   {
     "seed_family": "rmsprop_seed",
     "lr": 0.03,
-    "fitness_scalar": -9.991,
+    "fitness_scalar": -0.558,
     "valid": true,
     "note": ""
   },
   {
     "seed_family": "sgd_momentum_seed",
     "lr": 0.003,
-    "fitness_scalar": -9.735000000000001,
+    "fitness_scalar": -0.30200000000000005,
     "valid": true,
     "note": ""
   },
   {
     "seed_family": "sgd_momentum_seed",
     "lr": 0.01,
-    "fitness_scalar": -9.393,
+    "fitness_scalar": 0.039999999999999966,
     "valid": true,
     "note": ""
   },
@@ -93,21 +93,21 @@
   {
     "seed_family": "lion_seed",
     "lr": 1e-05,
-    "fitness_scalar": -9.766,
+    "fitness_scalar": -0.3330000000000001,
     "valid": true,
     "note": ""
   },
   {
     "seed_family": "lion_seed",
     "lr": 3e-05,
-    "fitness_scalar": -9.409,
+    "fitness_scalar": 0.023999999999999952,
     "valid": true,
     "note": ""
   },
   {
     "seed_family": "lion_seed",
     "lr": 0.0001,
-    "fitness_scalar": -9.3,
+    "fitness_scalar": 0.13299999999999995,
     "valid": true,
     "note": ""
   },
