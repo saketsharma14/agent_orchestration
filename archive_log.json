@@ -19,7 +19,7 @@
       "steps_to_target": 74,
       "memory_cost": 2,
       "compute_cost": 3,
-      "wall_time_s": 0.9131655693054199
+      "wall_time_s": 0.9428420066833496
     },
     "valid": true,
     "note": ""
@@ -44,7 +44,7 @@
       "steps_to_target": 74,
       "memory_cost": 2,
       "compute_cost": 3,
-      "wall_time_s": 0.93353271484375
+      "wall_time_s": 0.9020428657531738
     },
     "valid": true,
     "note": ""
@@ -63,13 +63,13 @@
       "weight_decay": 0.0,
       "lr": 0.01
     },
-    "fitness_scalar": 0.761,
+    "fitness_scalar": 0.765,
     "fitness_vector": {
-      "accuracy": 0.925,
+      "accuracy": 0.929,
       "steps_to_target": 74,
       "memory_cost": 1,
       "compute_cost": 2,
-      "wall_time_s": 0.8888835906982422
+      "wall_time_s": 0.876323938369751
     },
     "valid": true,
     "note": ""
@@ -94,7 +94,7 @@
       "steps_to_target": 10000,
       "memory_cost": 1,
       "compute_cost": 0,
-      "wall_time_s": 0.8958628177642822
+      "wall_time_s": 0.8470957279205322
     },
     "valid": true,
     "note": ""
@@ -119,733 +119,751 @@
       "steps_to_target": 10000,
       "memory_cost": 1,
       "compute_cost": 0,
-      "wall_time_s": 0.8740837574005127
+      "wall_time_s": 0.9091308116912842
     },
     "valid": true,
     "note": ""
   },
   {
     "candidate": {
-      "name": "candidate_02",
-      "grad_transform": "raw",
+      "name": "adam_no_bias_correction_seed",
+      "grad_transform": "momentum",
       "momentum_beta": 0.9,
       "second_moment": "ema_sq",
       "second_moment_beta": 0.999,
       "normalization": "sqrt_eps",
-      "eps": 1e-06,
+      "eps": 1e-08,
+      "bias_correction": false,
+      "weight_decay_mode": "none",
+      "weight_decay": 0.0,
+      "lr": 0.001
+    },
+    "fitness_scalar": 0.7929999999999999,
+    "fitness_vector": {
+      "accuracy": 0.956,
+      "steps_to_target": 23,
+      "memory_cost": 2,
+      "compute_cost": 2,
+      "wall_time_s": 0.9206116199493408
+    },
+    "valid": true,
+    "note": ""
+  },
+  {
+    "candidate": {
+      "name": "rmsprop_momentum_beta_0.5",
+      "grad_transform": "raw",
+      "momentum_beta": 0.5,
+      "second_moment": "ema_sq",
+      "second_moment_beta": 0.99,
+      "normalization": "sqrt_eps",
+      "eps": 1e-08,
+      "bias_correction": false,
+      "weight_decay_mode": "none",
+      "weight_decay": 0.0,
+      "lr": 0.01
+    },
+    "fitness_scalar": -999.0,
+    "fitness_vector": {},
+    "valid": false,
+    "note": "no result found; stderr tail:   File \"/tmp/tmpyz7c_mck.py\", line 9\n    class RmspropMomentumBeta0.5(Optimizer):\n                              ^^\nSyntaxError: invalid syntax\n"
+  },
+  {
+    "candidate": {
+      "name": "candidate_1",
+      "grad_transform": "raw",
+      "momentum_beta": 0.0,
+      "second_moment": "ema_sq",
+      "second_moment_beta": 0.99,
+      "normalization": "sqrt_eps",
+      "eps": 1e-08,
+      "bias_correction": false,
+      "weight_decay_mode": "none",
+      "weight_decay": 0.0,
+      "lr": 0.02
+    },
+    "fitness_scalar": 0.704,
+    "fitness_vector": {
+      "accuracy": 0.893,
+      "steps_to_target": 99,
+      "memory_cost": 1,
+      "compute_cost": 2,
+      "wall_time_s": 0.9445817470550537
+    },
+    "valid": true,
+    "note": ""
+  },
+  {
+    "candidate": {
+      "name": "rmsprop_bias_correction_seed",
+      "grad_transform": "raw",
+      "momentum_beta": 0.0,
+      "second_moment": "ema_sq",
+      "second_moment_beta": 0.99,
+      "normalization": "sqrt_eps",
+      "eps": 1e-08,
+      "bias_correction": true,
+      "weight_decay_mode": "none",
+      "weight_decay": 0.0,
+      "lr": 0.01
+    },
+    "fitness_scalar": 0.8239999999999998,
+    "fitness_vector": {
+      "accuracy": 0.956,
+      "steps_to_target": 22,
+      "memory_cost": 1,
+      "compute_cost": 3,
+      "wall_time_s": 0.8955035209655762
+    },
+    "valid": true,
+    "note": ""
+  },
+  {
+    "candidate": {
+      "name": "sign_sgd_seed",
+      "grad_transform": "sign_momentum",
+      "momentum_beta": 0.9,
+      "second_moment": "none",
+      "second_moment_beta": 0.0,
+      "normalization": "none",
+      "eps": 1e-08,
+      "bias_correction": false,
+      "weight_decay_mode": "none",
+      "weight_decay": 0.0,
+      "lr": 0.01
+    },
+    "fitness_scalar": 0.818,
+    "fitness_vector": {
+      "accuracy": 0.917,
+      "steps_to_target": 49,
+      "memory_cost": 1,
+      "compute_cost": 0,
+      "wall_time_s": 0.8420629501342773
+    },
+    "valid": true,
+    "note": ""
+  },
+  {
+    "candidate": {
+      "name": "novel_adam",
+      "grad_transform": "momentum",
+      "momentum_beta": 0.95,
+      "second_moment": "ema_sq",
+      "second_moment_beta": 0.99,
+      "normalization": "sqrt_eps",
+      "eps": 1e-08,
       "bias_correction": true,
       "weight_decay_mode": "none",
       "weight_decay": 0.0,
       "lr": 0.005
     },
-    "fitness_scalar": 0.813,
+    "fitness_scalar": 0.7509999999999999,
     "fitness_vector": {
-      "accuracy": 0.95,
-      "steps_to_target": 27,
-      "memory_cost": 1,
-      "compute_cost": 3,
-      "wall_time_s": 0.917914628982544
-    },
-    "valid": true,
-    "note": ""
-  },
-  {
-    "candidate": {
-      "name": "candidate_13",
-      "grad_transform": "raw",
-      "momentum_beta": 0.9,
-      "second_moment": "ema_sq",
-      "second_moment_beta": 0.999,
-      "normalization": "sqrt_eps",
-      "eps": 1e-07,
-      "bias_correction": true,
-      "weight_decay_mode": "none",
-      "weight_decay": 0.0,
-      "lr": 0.003
-    },
-    "fitness_scalar": 0.7999999999999998,
-    "fitness_vector": {
-      "accuracy": 0.95,
-      "steps_to_target": 40,
-      "memory_cost": 1,
-      "compute_cost": 3,
-      "wall_time_s": 0.9072558879852295
-    },
-    "valid": true,
-    "note": ""
-  },
-  {
-    "candidate": {
-      "name": "candidate_03",
-      "grad_transform": "momentum",
-      "momentum_beta": 0.9,
-      "second_moment": "ema_sq",
-      "second_moment_beta": 0.999,
-      "normalization": "sqrt_eps",
-      "eps": 1e-06,
-      "bias_correction": true,
-      "weight_decay_mode": "none",
-      "weight_decay": 0.0,
-      "lr": 0.001
-    },
-    "fitness_scalar": 0.669,
-    "fitness_vector": {
-      "accuracy": 0.903,
-      "steps_to_target": 74,
+      "accuracy": 0.952,
+      "steps_to_target": 41,
       "memory_cost": 2,
       "compute_cost": 3,
-      "wall_time_s": 0.923743486404419
+      "wall_time_s": 0.9570672512054443
     },
     "valid": true,
     "note": ""
   },
   {
     "candidate": {
-      "name": "candidate_03",
-      "grad_transform": "raw",
-      "momentum_beta": 0.9,
+      "name": "novel_adam_no_bias_correction",
+      "grad_transform": "momentum",
+      "momentum_beta": 0.95,
       "second_moment": "ema_sq",
-      "second_moment_beta": 0.999,
+      "second_moment_beta": 0.99,
       "normalization": "sqrt_eps",
-      "eps": 1e-07,
-      "bias_correction": true,
+      "eps": 1e-08,
+      "bias_correction": false,
       "weight_decay_mode": "none",
       "weight_decay": 0.0,
-      "lr": 0.001
+      "lr": 0.005
     },
-    "fitness_scalar": 0.692,
+    "fitness_scalar": 0.7959999999999999,
     "fitness_vector": {
-      "accuracy": 0.876,
-      "steps_to_target": 74,
-      "memory_cost": 1,
-      "compute_cost": 3,
-      "wall_time_s": 0.915687084197998
+      "accuracy": 0.959,
+      "steps_to_target": 23,
+      "memory_cost": 2,
+      "compute_cost": 2,
+      "wall_time_s": 0.9243848323822021
     },
     "valid": true,
     "note": ""
   },
   {
     "candidate": {
-      "name": "candidate_03",
+      "name": "novel_adamw",
       "grad_transform": "momentum",
       "momentum_beta": 0.95,
       "second_moment": "ema_sq",
       "second_moment_beta": 0.999,
       "normalization": "sqrt_eps",
-      "eps": 1e-07,
-      "bias_correction": true,
-      "weight_decay_mode": "none",
-      "weight_decay": 0.0,
-      "lr": 0.002
-    },
-    "fitness_scalar": 0.72,
-    "fitness_vector": {
-      "accuracy": 0.932,
-      "steps_to_target": 52,
-      "memory_cost": 2,
-      "compute_cost": 3,
-      "wall_time_s": 0.9358389377593994
-    },
-    "valid": true,
-    "note": ""
-  },
-  {
-    "candidate": {
-      "name": "candidate_04",
-      "grad_transform": "raw",
-      "momentum_beta": 0.95,
-      "second_moment": "ema_sq",
-      "second_moment_beta": 0.999,
-      "normalization": "none",
       "eps": 1e-08,
       "bias_correction": true,
       "weight_decay_mode": "decoupled",
       "weight_decay": 0.02,
-      "lr": 0.001
+      "lr": 0.005
     },
-    "fitness_scalar": -9.929,
+    "fitness_scalar": 0.7429999999999999,
     "fitness_vector": {
-      "accuracy": 0.141,
-      "steps_to_target": 10000,
-      "memory_cost": 1,
-      "compute_cost": 1,
-      "wall_time_s": 0.9032163619995117
+      "accuracy": 0.948,
+      "steps_to_target": 45,
+      "memory_cost": 2,
+      "compute_cost": 3,
+      "wall_time_s": 0.9213061332702637
     },
     "valid": true,
     "note": ""
   },
   {
     "candidate": {
-      "name": "candidate_05",
-      "grad_transform": "sign_momentum",
-      "momentum_beta": 0.95,
+      "name": "novel_rmsprop",
+      "grad_transform": "raw",
+      "momentum_beta": 0.0,
       "second_moment": "ema_sq",
-      "second_moment_beta": 0.99,
+      "second_moment_beta": 0.995,
       "normalization": "sqrt_eps",
       "eps": 1e-07,
       "bias_correction": true,
       "weight_decay_mode": "none",
       "weight_decay": 0.0,
-      "lr": 0.005
+      "lr": 0.02
     },
-    "fitness_scalar": -10.049,
+    "fitness_scalar": 0.4749999999999999,
     "fitness_vector": {
-      "accuracy": 0.111,
-      "steps_to_target": 10000,
-      "memory_cost": 2,
-      "compute_cost": 3,
-      "wall_time_s": 0.9700913429260254
-    },
-    "valid": true,
-    "note": ""
-  },
-  {
-    "candidate": {
-      "name": "candidate_06",
-      "grad_transform": "raw",
-      "momentum_beta": 0.8,
-      "second_moment": "ema_sq",
-      "second_moment_beta": 0.95,
-      "normalization": "sqrt_eps",
-      "eps": 1e-07,
-      "bias_correction": true,
-      "weight_decay_mode": "coupled",
-      "weight_decay": 0.001,
-      "lr": 0.003
-    },
-    "fitness_scalar": 0.7879999999999998,
-    "fitness_vector": {
-      "accuracy": 0.939,
-      "steps_to_target": 41,
+      "accuracy": 0.607,
+      "steps_to_target": 22,
       "memory_cost": 1,
       "compute_cost": 3,
-      "wall_time_s": 0.9387292861938477
+      "wall_time_s": 0.8936786651611328
     },
     "valid": true,
     "note": ""
   },
   {
     "candidate": {
-      "name": "candidate_10",
+      "name": "novel_sign_adamw",
       "grad_transform": "sign_momentum",
-      "momentum_beta": 0.95,
-      "second_moment": "ema_sq",
-      "second_moment_beta": 0.999,
-      "normalization": "sqrt_eps",
-      "eps": 1e-07,
-      "bias_correction": true,
-      "weight_decay_mode": "decoupled",
-      "weight_decay": 0.01,
-      "lr": 0.002
-    },
-    "fitness_scalar": -10.049,
-    "fitness_vector": {
-      "accuracy": 0.111,
-      "steps_to_target": 10000,
-      "memory_cost": 2,
-      "compute_cost": 3,
-      "wall_time_s": 0.957648754119873
-    },
-    "valid": true,
-    "note": ""
-  },
-  {
-    "candidate": {
-      "name": "candidate_10",
-      "grad_transform": "raw",
       "momentum_beta": 0.9,
       "second_moment": "ema_sq",
       "second_moment_beta": 0.999,
       "normalization": "sqrt_eps",
-      "eps": 1e-05,
+      "eps": 1e-08,
       "bias_correction": true,
-      "weight_decay_mode": "coupled",
-      "weight_decay": 0.0001,
-      "lr": 0.004
+      "weight_decay_mode": "decoupled",
+      "weight_decay": 0.02,
+      "lr": 0.005
     },
-    "fitness_scalar": 0.8159999999999998,
+    "fitness_scalar": -10.047,
+    "fitness_vector": {
+      "accuracy": 0.113,
+      "steps_to_target": 10000,
+      "memory_cost": 2,
+      "compute_cost": 3,
+      "wall_time_s": 0.9569835662841797
+    },
+    "valid": true,
+    "note": ""
+  },
+  {
+    "candidate": {
+      "name": "novel_rmsprop",
+      "grad_transform": "raw",
+      "momentum_beta": 0.0,
+      "second_moment": "ema_sq",
+      "second_moment_beta": 0.95,
+      "normalization": "sqrt_eps",
+      "eps": 1e-07,
+      "bias_correction": false,
+      "weight_decay_mode": "none",
+      "weight_decay": 0.0,
+      "lr": 0.02
+    },
+    "fitness_scalar": 0.7919999999999999,
+    "fitness_vector": {
+      "accuracy": 0.934,
+      "steps_to_target": 52,
+      "memory_cost": 1,
+      "compute_cost": 2,
+      "wall_time_s": 0.9281177520751953
+    },
+    "valid": true,
+    "note": ""
+  },
+  {
+    "candidate": {
+      "name": "novel_adagrad",
+      "grad_transform": "raw",
+      "momentum_beta": 0.0,
+      "second_moment": "max_sq",
+      "second_moment_beta": 0.15,
+      "normalization": "sqrt_eps",
+      "eps": 1e-08,
+      "bias_correction": true,
+      "weight_decay_mode": "none",
+      "weight_decay": 0.0,
+      "lr": 0.02
+    },
+    "fitness_scalar": 0.8179999999999998,
+    "fitness_vector": {
+      "accuracy": 0.955,
+      "steps_to_target": 27,
+      "memory_cost": 1,
+      "compute_cost": 3,
+      "wall_time_s": 0.9659585952758789
+    },
+    "valid": true,
+    "note": ""
+  },
+  {
+    "candidate": {
+      "name": "novel_ftrl",
+      "grad_transform": "raw",
+      "momentum_beta": 0.0,
+      "second_moment": "ema_sq",
+      "second_moment_beta": 0.95,
+      "normalization": "none",
+      "eps": 1e-07,
+      "bias_correction": false,
+      "weight_decay_mode": "coupled",
+      "weight_decay": 0.02,
+      "lr": 0.03
+    },
+    "fitness_scalar": 0.411,
+    "fitness_vector": {
+      "accuracy": 0.629,
+      "steps_to_target": 168,
+      "memory_cost": 1,
+      "compute_cost": 0,
+      "wall_time_s": 0.8770477771759033
+    },
+    "valid": true,
+    "note": ""
+  },
+  {
+    "candidate": {
+      "name": "novel_adagrad_no_bias_correction",
+      "grad_transform": "raw",
+      "momentum_beta": 0.0,
+      "second_moment": "max_sq",
+      "second_moment_beta": 0.15,
+      "normalization": "sqrt_eps",
+      "eps": 1e-07,
+      "bias_correction": false,
+      "weight_decay_mode": "none",
+      "weight_decay": 0.0,
+      "lr": 0.02
+    },
+    "fitness_scalar": 0.8369999999999999,
     "fitness_vector": {
       "accuracy": 0.954,
+      "steps_to_target": 27,
+      "memory_cost": 1,
+      "compute_cost": 2,
+      "wall_time_s": 0.9236001968383789
+    },
+    "valid": true,
+    "note": ""
+  },
+  {
+    "candidate": {
+      "name": "novel_adam_max_sq_bias_correction",
+      "grad_transform": "momentum",
+      "momentum_beta": 0.9,
+      "second_moment": "max_sq",
+      "second_moment_beta": 0.999,
+      "normalization": "sqrt_eps",
+      "eps": 1e-08,
+      "bias_correction": true,
+      "weight_decay_mode": "none",
+      "weight_decay": 0.0,
+      "lr": 0.02
+    },
+    "fitness_scalar": 0.7349999999999999,
+    "fitness_vector": {
+      "accuracy": 0.94,
+      "steps_to_target": 45,
+      "memory_cost": 2,
+      "compute_cost": 3,
+      "wall_time_s": 0.9527220726013184
+    },
+    "valid": true,
+    "note": ""
+  },
+  {
+    "candidate": {
+      "name": "novel_adamw_max_sq_bias_correction",
+      "grad_transform": "momentum",
+      "momentum_beta": 0.95,
+      "second_moment": "max_sq",
+      "second_moment_beta": 0.999,
+      "normalization": "sqrt_eps",
+      "eps": 1e-08,
+      "bias_correction": true,
+      "weight_decay_mode": "decoupled",
+      "weight_decay": 0.02,
+      "lr": 0.005
+    },
+    "fitness_scalar": 0.698,
+    "fitness_vector": {
+      "accuracy": 0.91,
+      "steps_to_target": 52,
+      "memory_cost": 2,
+      "compute_cost": 3,
+      "wall_time_s": 0.9510529041290283
+    },
+    "valid": true,
+    "note": ""
+  },
+  {
+    "candidate": {
+      "name": "novel_adam_max_sq_bias_correction",
+      "grad_transform": "momentum",
+      "momentum_beta": 0.95,
+      "second_moment": "max_sq",
+      "second_moment_beta": 0.99,
+      "normalization": "sqrt_eps",
+      "eps": 1e-08,
+      "bias_correction": true,
+      "weight_decay_mode": "none",
+      "weight_decay": 0.0,
+      "lr": 0.005
+    },
+    "fitness_scalar": 0.698,
+    "fitness_vector": {
+      "accuracy": 0.91,
+      "steps_to_target": 52,
+      "memory_cost": 2,
+      "compute_cost": 3,
+      "wall_time_s": 0.9635262489318848
+    },
+    "valid": true,
+    "note": ""
+  },
+  {
+    "candidate": {
+      "name": "novel_adam_no_bias_correction",
+      "grad_transform": "momentum",
+      "momentum_beta": 0.95,
+      "second_moment": "ema_sq",
+      "second_moment_beta": 0.99,
+      "normalization": "sqrt_eps",
+      "eps": 1e-08,
+      "bias_correction": false,
+      "weight_decay_mode": "none",
+      "weight_decay": 0.0,
+      "lr": 0.01
+    },
+    "fitness_scalar": 0.7889999999999999,
+    "fitness_vector": {
+      "accuracy": 0.952,
+      "steps_to_target": 23,
+      "memory_cost": 2,
+      "compute_cost": 2,
+      "wall_time_s": 0.9224448204040527
+    },
+    "valid": true,
+    "note": ""
+  },
+  {
+    "candidate": {
+      "name": "novel_adamw_max_sq_bias_correction",
+      "grad_transform": "momentum",
+      "momentum_beta": 0.95,
+      "second_moment": "ema_sq",
+      "second_moment_beta": 0.999,
+      "normalization": "sqrt_eps",
+      "eps": 1e-08,
+      "bias_correction": true,
+      "weight_decay_mode": "decoupled",
+      "weight_decay": 0.02,
+      "lr": 0.005
+    },
+    "fitness_scalar": 0.7429999999999999,
+    "fitness_vector": {
+      "accuracy": 0.948,
+      "steps_to_target": 45,
+      "memory_cost": 2,
+      "compute_cost": 3,
+      "wall_time_s": 0.9585676193237305
+    },
+    "valid": true,
+    "note": ""
+  },
+  {
+    "candidate": {
+      "name": "novel_adamw_no_bias_correction",
+      "grad_transform": "momentum",
+      "momentum_beta": 0.95,
+      "second_moment": "ema_sq",
+      "second_moment_beta": 0.999,
+      "normalization": "sqrt_eps",
+      "eps": 1e-08,
+      "bias_correction": false,
+      "weight_decay_mode": "decoupled",
+      "weight_decay": 0.02,
+      "lr": 0.005
+    },
+    "fitness_scalar": 0.7879999999999999,
+    "fitness_vector": {
+      "accuracy": 0.95,
+      "steps_to_target": 22,
+      "memory_cost": 2,
+      "compute_cost": 2,
+      "wall_time_s": 0.9533350467681885
+    },
+    "valid": true,
+    "note": ""
+  },
+  {
+    "candidate": {
+      "name": "novel_rmsprop_sign_decay",
+      "grad_transform": "sign_momentum",
+      "momentum_beta": 0.9,
+      "second_moment": "ema_sq",
+      "second_moment_beta": 0.95,
+      "normalization": "sqrt_eps",
+      "eps": 1e-08,
+      "bias_correction": true,
+      "weight_decay_mode": "decoupled",
+      "weight_decay": 0.02,
+      "lr": 0.01
+    },
+    "fitness_scalar": -10.052,
+    "fitness_vector": {
+      "accuracy": 0.108,
+      "steps_to_target": 10000,
+      "memory_cost": 2,
+      "compute_cost": 3,
+      "wall_time_s": 0.9598000049591064
+    },
+    "valid": true,
+    "note": ""
+  },
+  {
+    "candidate": {
+      "name": "novel_nadam",
+      "grad_transform": "momentum",
+      "momentum_beta": 0.95,
+      "second_moment": "ema_sq",
+      "second_moment_beta": 0.999,
+      "normalization": "sqrt_eps",
+      "eps": 1e-08,
+      "bias_correction": true,
+      "weight_decay_mode": "none",
+      "weight_decay": 0.0,
+      "lr": 0.02
+    },
+    "fitness_scalar": 0.696,
+    "fitness_vector": {
+      "accuracy": 0.905,
+      "steps_to_target": 49,
+      "memory_cost": 2,
+      "compute_cost": 3,
+      "wall_time_s": 0.9716594219207764
+    },
+    "valid": true,
+    "note": ""
+  },
+  {
+    "candidate": {
+      "name": "novel_adamw_max_sq_bias_correction",
+      "grad_transform": "momentum",
+      "momentum_beta": 0.95,
+      "second_moment": "max_sq",
+      "second_moment_beta": 0.999,
+      "normalization": "sqrt_eps",
+      "eps": 1e-08,
+      "bias_correction": true,
+      "weight_decay_mode": "decoupled",
+      "weight_decay": 0.02,
+      "lr": 0.005
+    },
+    "fitness_scalar": 0.698,
+    "fitness_vector": {
+      "accuracy": 0.91,
+      "steps_to_target": 52,
+      "memory_cost": 2,
+      "compute_cost": 3,
+      "wall_time_s": 0.9851176738739014
+    },
+    "valid": true,
+    "note": ""
+  },
+  {
+    "candidate": {
+      "name": "novel_sign_adam",
+      "grad_transform": "sign_momentum",
+      "momentum_beta": 0.95,
+      "second_moment": "ema_sq",
+      "second_moment_beta": 0.99,
+      "normalization": "sqrt_eps",
+      "eps": 1e-08,
+      "bias_correction": true,
+      "weight_decay_mode": "none",
+      "weight_decay": 0.0,
+      "lr": 0.02
+    },
+    "fitness_scalar": -10.047,
+    "fitness_vector": {
+      "accuracy": 0.113,
+      "steps_to_target": 10000,
+      "memory_cost": 2,
+      "compute_cost": 3,
+      "wall_time_s": 1.034545660018921
+    },
+    "valid": true,
+    "note": ""
+  },
+  {
+    "candidate": {
+      "name": "novel_nadam_no_bias_correction",
+      "grad_transform": "momentum",
+      "momentum_beta": 0.9,
+      "second_moment": "ema_sq",
+      "second_moment_beta": 0.99,
+      "normalization": "sqrt_eps",
+      "eps": 1e-08,
+      "bias_correction": false,
+      "weight_decay_mode": "none",
+      "weight_decay": 0.0,
+      "lr": 0.02
+    },
+    "fitness_scalar": 0.757,
+    "fitness_vector": {
+      "accuracy": 0.932,
+      "steps_to_target": 35,
+      "memory_cost": 2,
+      "compute_cost": 2,
+      "wall_time_s": 0.9385006427764893
+    },
+    "valid": true,
+    "note": ""
+  },
+  {
+    "candidate": {
+      "name": "novel_adagradw_max_sq_bias_correction",
+      "grad_transform": "raw",
+      "momentum_beta": 0.0,
+      "second_moment": "max_sq",
+      "second_moment_beta": 0.15,
+      "normalization": "sqrt_eps",
+      "eps": 1e-08,
+      "bias_correction": true,
+      "weight_decay_mode": "decoupled",
+      "weight_decay": 0.02,
+      "lr": 0.01
+    },
+    "fitness_scalar": 0.8069999999999999,
+    "fitness_vector": {
+      "accuracy": 0.945,
       "steps_to_target": 28,
       "memory_cost": 1,
       "compute_cost": 3,
-      "wall_time_s": 0.9814255237579346
+      "wall_time_s": 1.0112488269805908
     },
     "valid": true,
     "note": ""
   },
   {
     "candidate": {
-      "name": "candidate_11",
-      "grad_transform": "sgd",
-      "momentum_beta": 0.85,
+      "name": "novel_adamw_max_sq_bias_correction_2",
+      "grad_transform": "momentum",
+      "momentum_beta": 0.95,
       "second_moment": "ema_sq",
-      "second_moment_beta": 0.99,
-      "normalization": "layer_norm",
-      "eps": 1e-07,
-      "bias_correction": true,
-      "weight_decay_mode": "none",
-      "weight_decay": 0.0,
-      "lr": 0.003
-    },
-    "fitness_scalar": -999.0,
-    "fitness_vector": {},
-    "valid": false,
-    "note": "name 'm' is not defined"
-  },
-  {
-    "candidate": {
-      "name": "candidate_18",
-      "grad_transform": "sgd",
-      "momentum_beta": 0.9,
-      "second_moment": "ema_sq",
-      "second_moment_beta": 0.99,
-      "normalization": "layer_norm",
-      "eps": 1e-05,
+      "second_moment_beta": 0.999,
+      "normalization": "sqrt_eps",
+      "eps": 1e-08,
       "bias_correction": true,
       "weight_decay_mode": "decoupled",
-      "weight_decay": 0.01,
-      "lr": 0.003
+      "weight_decay": 0.02,
+      "lr": 0.03
     },
-    "fitness_scalar": -999.0,
-    "fitness_vector": {},
-    "valid": false,
-    "note": "name 'm' is not defined"
+    "fitness_scalar": 0.7230000000000001,
+    "fitness_vector": {
+      "accuracy": 0.935,
+      "steps_to_target": 52,
+      "memory_cost": 2,
+      "compute_cost": 3,
+      "wall_time_s": 0.9612514972686768
+    },
+    "valid": true,
+    "note": ""
   },
   {
     "candidate": {
-      "name": "candidate_18",
-      "grad_transform": "sgd",
+      "name": "novel_adagradw_max_sq_bias_correction",
+      "grad_transform": "raw",
       "momentum_beta": 0.0,
+      "second_moment": "max_sq",
+      "second_moment_beta": 0.15,
+      "normalization": "sqrt_eps",
+      "eps": 1e-08,
+      "bias_correction": true,
+      "weight_decay_mode": "decoupled",
+      "weight_decay": 0.02,
+      "lr": 0.01
+    },
+    "fitness_scalar": 0.8059999999999998,
+    "fitness_vector": {
+      "accuracy": 0.944,
+      "steps_to_target": 28,
+      "memory_cost": 1,
+      "compute_cost": 3,
+      "wall_time_s": 0.9616661071777344
+    },
+    "valid": true,
+    "note": ""
+  },
+  {
+    "candidate": {
+      "name": "novel_nadam_with_high_lr",
+      "grad_transform": "momentum",
+      "momentum_beta": 0.95,
       "second_moment": "ema_sq",
-      "second_moment_beta": 0.99,
-      "normalization": "layer_norm",
+      "second_moment_beta": 0.999,
+      "normalization": "sqrt_eps",
+      "eps": 1e-08,
+      "bias_correction": true,
+      "weight_decay_mode": "decoupled",
+      "weight_decay": 0.02,
+      "lr": 0.05
+    },
+    "fitness_scalar": 0.6739999999999999,
+    "fitness_vector": {
+      "accuracy": 0.893,
+      "steps_to_target": 59,
+      "memory_cost": 2,
+      "compute_cost": 3,
+      "wall_time_s": 1.0298316478729248
+    },
+    "valid": true,
+    "note": ""
+  },
+  {
+    "candidate": {
+      "name": "novel_adam_w_max_sq_bias_correction",
+      "grad_transform": "momentum",
+      "momentum_beta": 0.95,
+      "second_moment": "ema_sq",
+      "second_moment_beta": 0.999,
+      "normalization": "sqrt_eps",
       "eps": 1e-07,
       "bias_correction": true,
-      "weight_decay_mode": "none",
-      "weight_decay": 0.0,
+      "weight_decay_mode": "decoupled",
+      "weight_decay": 0.02,
       "lr": 0.005
     },
-    "fitness_scalar": -999.0,
-    "fitness_vector": {},
-    "valid": false,
-    "note": "name 'm' is not defined"
-  },
-  {
-    "candidate": {
-      "name": "candidate_15",
-      "grad_transform": "sgd",
-      "momentum_beta": 0.0,
-      "second_moment": "ema_sq",
-      "second_moment_beta": 0.99,
-      "normalization": "layer_norm",
-      "eps": 1e-07,
-      "bias_correction": true,
-      "weight_decay_mode": "none",
-      "weight_decay": 0.0,
-      "lr": 0.003
-    },
-    "fitness_scalar": -999.0,
-    "fitness_vector": {},
-    "valid": false,
-    "note": "name 'm' is not defined"
-  },
-  {
-    "candidate": {
-      "name": "candidate_18",
-      "grad_transform": "raw",
-      "momentum_beta": 0.9,
-      "second_moment": "ema_sq",
-      "second_moment_beta": 0.99,
-      "normalization": "layer_norm",
-      "eps": 1e-06,
-      "bias_correction": true,
-      "weight_decay_mode": "none",
-      "weight_decay": 0.0,
-      "lr": 0.005
-    },
-    "fitness_scalar": -9.514,
+    "fitness_scalar": 0.742,
     "fitness_vector": {
-      "accuracy": 0.556,
-      "steps_to_target": 10000,
-      "memory_cost": 1,
-      "compute_cost": 1,
-      "wall_time_s": 0.917680025100708
-    },
-    "valid": true,
-    "note": ""
-  },
-  {
-    "candidate": {
-      "name": "candidate_19",
-      "grad_transform": "momentum",
-      "momentum_beta": 0.95,
-      "second_moment": "ema_sq",
-      "second_moment_beta": 0.99,
-      "normalization": "sqrt_eps",
-      "eps": 1e-06,
-      "bias_correction": true,
-      "weight_decay_mode": "decoupled",
-      "weight_decay": 0.01,
-      "lr": 0.003
-    },
-    "fitness_scalar": 0.7369999999999999,
-    "fitness_vector": {
-      "accuracy": 0.945,
-      "steps_to_target": 48,
-      "memory_cost": 2,
-      "compute_cost": 3,
-      "wall_time_s": 0.9586091041564941
-    },
-    "valid": true,
-    "note": ""
-  },
-  {
-    "candidate": {
-      "name": "candidate_12",
-      "grad_transform": "momentum",
-      "momentum_beta": 0.85,
-      "second_moment": "ema_sq",
-      "second_moment_beta": 0.98,
-      "normalization": "sqrt_eps",
-      "eps": 1e-07,
-      "bias_correction": true,
-      "weight_decay_mode": "coupled",
-      "weight_decay": 0.0005,
-      "lr": 0.002
-    },
-    "fitness_scalar": 0.744,
-    "fitness_vector": {
-      "accuracy": 0.949,
+      "accuracy": 0.947,
       "steps_to_target": 45,
       "memory_cost": 2,
       "compute_cost": 3,
-      "wall_time_s": 0.9657728672027588
-    },
-    "valid": true,
-    "note": ""
-  },
-  {
-    "candidate": {
-      "name": "candidate_20",
-      "grad_transform": "momentum",
-      "momentum_beta": 0.9,
-      "second_moment": "ema_sq",
-      "second_moment_beta": 0.999,
-      "normalization": "sqrt_eps",
-      "eps": 1e-07,
-      "bias_correction": true,
-      "weight_decay_mode": "coupled",
-      "weight_decay": 0.0005,
-      "lr": 0.002
-    },
-    "fitness_scalar": 0.7369999999999999,
-    "fitness_vector": {
-      "accuracy": 0.942,
-      "steps_to_target": 45,
-      "memory_cost": 2,
-      "compute_cost": 3,
-      "wall_time_s": 0.9903604984283447
-    },
-    "valid": true,
-    "note": ""
-  },
-  {
-    "candidate": {
-      "name": "candidate_20",
-      "grad_transform": "raw",
-      "momentum_beta": 0.95,
-      "second_moment": "ema_sq",
-      "second_moment_beta": 0.999,
-      "normalization": "sqrt_eps",
-      "eps": 1e-07,
-      "bias_correction": true,
-      "weight_decay_mode": "coupled",
-      "weight_decay": 0.0002,
-      "lr": 0.003
-    },
-    "fitness_scalar": 0.7999999999999998,
-    "fitness_vector": {
-      "accuracy": 0.95,
-      "steps_to_target": 40,
-      "memory_cost": 1,
-      "compute_cost": 3,
-      "wall_time_s": 0.9842829704284668
-    },
-    "valid": true,
-    "note": ""
-  },
-  {
-    "candidate": {
-      "name": "candidate_21",
-      "grad_transform": "momentum",
-      "momentum_beta": 0.8,
-      "second_moment": "ema_sq",
-      "second_moment_beta": 0.95,
-      "normalization": "sqrt_eps",
-      "eps": 1e-07,
-      "bias_correction": true,
-      "weight_decay_mode": "none",
-      "weight_decay": 0.0,
-      "lr": 0.003
-    },
-    "fitness_scalar": 0.7609999999999999,
-    "fitness_vector": {
-      "accuracy": 0.966,
-      "steps_to_target": 45,
-      "memory_cost": 2,
-      "compute_cost": 3,
-      "wall_time_s": 1.0173530578613281
-    },
-    "valid": true,
-    "note": ""
-  },
-  {
-    "candidate": {
-      "name": "candidate_16",
-      "grad_transform": "sign_momentum",
-      "momentum_beta": 0.9,
-      "second_moment": "ema_sq",
-      "second_moment_beta": 0.999,
-      "normalization": "sqrt_eps",
-      "eps": 1e-07,
-      "bias_correction": true,
-      "weight_decay_mode": "coupled",
-      "weight_decay": 0.001,
-      "lr": 0.003
-    },
-    "fitness_scalar": -10.048,
-    "fitness_vector": {
-      "accuracy": 0.112,
-      "steps_to_target": 10000,
-      "memory_cost": 2,
-      "compute_cost": 3,
-      "wall_time_s": 0.9836220741271973
-    },
-    "valid": true,
-    "note": ""
-  },
-  {
-    "candidate": {
-      "name": "candidate_23",
-      "grad_transform": "momentum",
-      "momentum_beta": 0.7,
-      "second_moment": "max_sq",
-      "second_moment_beta": 0.95,
-      "normalization": "raw_eps",
-      "eps": 1e-06,
-      "bias_correction": false,
-      "weight_decay_mode": "coupled",
-      "weight_decay": 0.0002,
-      "lr": 0.003
-    },
-    "fitness_scalar": -9.619,
-    "fitness_vector": {
-      "accuracy": 0.501,
-      "steps_to_target": 10000,
-      "memory_cost": 2,
-      "compute_cost": 1,
-      "wall_time_s": 1.0070278644561768
-    },
-    "valid": true,
-    "note": ""
-  },
-  {
-    "candidate": {
-      "name": "candidate_32",
-      "grad_transform": "momentum",
-      "momentum_beta": 0.9,
-      "second_moment": "ema_sq",
-      "second_moment_beta": 0.999,
-      "normalization": "sqrt_eps",
-      "eps": 1e-05,
-      "bias_correction": false,
-      "weight_decay_mode": "none",
-      "weight_decay": 0.0,
-      "lr": 0.004
-    },
-    "fitness_scalar": 0.7809999999999999,
-    "fitness_vector": {
-      "accuracy": 0.948,
-      "steps_to_target": 27,
-      "memory_cost": 2,
-      "compute_cost": 2,
-      "wall_time_s": 0.9732398986816406
-    },
-    "valid": true,
-    "note": ""
-  },
-  {
-    "candidate": {
-      "name": "candidate_07",
-      "grad_transform": "raw",
-      "momentum_beta": 0.85,
-      "second_moment": "max_sq",
-      "second_moment_beta": 0.999,
-      "normalization": "sqrt_eps",
-      "eps": 1e-06,
-      "bias_correction": false,
-      "weight_decay_mode": "none",
-      "weight_decay": 0.0,
-      "lr": 0.004
-    },
-    "fitness_scalar": 0.7659999999999999,
-    "fitness_vector": {
-      "accuracy": 0.912,
-      "steps_to_target": 56,
-      "memory_cost": 1,
-      "compute_cost": 2,
-      "wall_time_s": 0.9908819198608398
-    },
-    "valid": true,
-    "note": ""
-  },
-  {
-    "candidate": {
-      "name": "candidate_24",
-      "grad_transform": "sign_momentum",
-      "momentum_beta": 0.9,
-      "second_moment": "none",
-      "second_moment_beta": 0.9,
-      "normalization": "none",
-      "eps": 1e-05,
-      "bias_correction": false,
-      "weight_decay_mode": "coupled",
-      "weight_decay": 0.001,
-      "lr": 0.001
-    },
-    "fitness_scalar": 0.8519999999999999,
-    "fitness_vector": {
-      "accuracy": 0.958,
-      "steps_to_target": 56,
-      "memory_cost": 1,
-      "compute_cost": 0,
-      "wall_time_s": 0.9813940525054932
-    },
-    "valid": true,
-    "note": ""
-  },
-  {
-    "candidate": {
-      "name": "candidate_25",
-      "grad_transform": "sign_momentum",
-      "momentum_beta": 0.8,
-      "second_moment": "ema_sq",
-      "second_moment_beta": 0.98,
-      "normalization": "raw_eps",
-      "eps": 1e-06,
-      "bias_correction": true,
-      "weight_decay_mode": "coupled",
-      "weight_decay": 0.001,
-      "lr": 0.003
-    },
-    "fitness_scalar": -10.007,
-    "fitness_vector": {
-      "accuracy": 0.133,
-      "steps_to_target": 10000,
-      "memory_cost": 2,
-      "compute_cost": 2,
-      "wall_time_s": 1.0506083965301514
-    },
-    "valid": true,
-    "note": ""
-  },
-  {
-    "candidate": {
-      "name": "candidate_34",
-      "grad_transform": "raw",
-      "momentum_beta": 0.8,
-      "second_moment": "max_sq",
-      "second_moment_beta": 0.95,
-      "normalization": "sqrt_eps",
-      "eps": 1e-06,
-      "bias_correction": true,
-      "weight_decay_mode": "coupled",
-      "weight_decay": 0.0005,
-      "lr": 0.003
-    },
-    "fitness_scalar": 0.7269999999999999,
-    "fitness_vector": {
-      "accuracy": 0.894,
-      "steps_to_target": 57,
-      "memory_cost": 1,
-      "compute_cost": 3,
-      "wall_time_s": 1.0120563507080078
-    },
-    "valid": true,
-    "note": ""
-  },
-  {
-    "candidate": {
-      "name": "candidate_25",
-      "grad_transform": "momentum",
-      "momentum_beta": 0.95,
-      "second_moment": "max_sq",
-      "second_moment_beta": 0.98,
-      "normalization": "none",
-      "eps": 1e-06,
-      "bias_correction": true,
-      "weight_decay_mode": "decoupled",
-      "weight_decay": 0.0001,
-      "lr": 0.003
-    },
-    "fitness_scalar": -9.809,
-    "fitness_vector": {
-      "accuracy": 0.311,
-      "steps_to_target": 10000,
-      "memory_cost": 2,
-      "compute_cost": 1,
-      "wall_time_s": 1.0243752002716064
-    },
-    "valid": true,
-    "note": ""
-  },
-  {
-    "candidate": {
-      "name": "candidate_35",
-      "grad_transform": "sign_momentum",
-      "momentum_beta": 0.95,
-      "second_moment": "ema_sq",
-      "second_moment_beta": 0.998,
-      "normalization": "raw_eps",
-      "eps": 1e-06,
-      "bias_correction": false,
-      "weight_decay_mode": "decoupled",
-      "weight_decay": 0.005,
-      "lr": 0.002
-    },
-    "fitness_scalar": -10.021999999999998,
-    "fitness_vector": {
-      "accuracy": 0.098,
-      "steps_to_target": 10000,
-      "memory_cost": 2,
-      "compute_cost": 1,
-      "wall_time_s": 0.9785382747650146
-    },
-    "valid": true,
-    "note": ""
-  },
-  {
-    "candidate": {
-      "name": "candidate_45",
-      "grad_transform": "momentum",
-      "momentum_beta": 0.9,
-      "second_moment": "max_sq",
-      "second_moment_beta": 0.999,
-      "normalization": "sqrt_eps",
-      "eps": 1e-06,
-      "bias_correction": true,
-      "weight_decay_mode": "coupled",
-      "weight_decay": 0.0005,
-      "lr": 0.003
-    },
-    "fitness_scalar": 0.6950000000000001,
-    "fitness_vector": {
-      "accuracy": 0.912,
-      "steps_to_target": 57,
-      "memory_cost": 2,
-      "compute_cost": 3,
-      "wall_time_s": 1.0295257568359375
+      "wall_time_s": 0.9754533767700195
     },
     "valid": true,
     "note": ""

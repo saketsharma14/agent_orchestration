@@ -41,7 +41,13 @@ def run_one(candidate: OptimizerCandidate) -> dict:
     from tasks.proxy_cnn import train_and_score
     metrics = train_and_score(optimizer_cls)
     fit = score(candidate, metrics)
-    return {"name": candidate.name, "metrics": metrics, "fitness": fit.scalar}
+    return {
+        "name": candidate.name,
+        "metrics": metrics,
+        "fitness": fit.scalar,
+        "performance_component": fit.vector.get("performance_component"),
+        "cost_component": fit.vector.get("cost_component"),
+    }
 
 
 def main():
@@ -61,7 +67,10 @@ def main():
         except Exception as e:
             rows.append({"name": cand.name, "metrics": None, "fitness": None, "error": str(e)})
 
-    header = f"{'name':32s} {'accuracy':>9s} {'steps_to_target':>16s} {'fitness':>9s}"
+    header = (
+        f"{'name':32s} {'accuracy':>9s} {'steps_to_target':>16s} {'fitness':>9s} "
+        f"{'perf_component':>15s} {'cost_component':>15s}"
+    )
     print(header)
     print("-" * len(header))
     for r in rows:
@@ -71,7 +80,18 @@ def main():
         acc = r["metrics"]["accuracy"]
         steps = r["metrics"]["steps_to_target"]
         fit = r["fitness"]
-        print(f"{r['name']:32s} {acc:9.3f} {str(steps):>16s} {fit:9.4f}")
+        perf = r.get("performance_component")
+        cost = r.get("cost_component")
+        perf_s = f"{perf:.4f}" if perf is not None else "n/a"
+        cost_s = f"{cost:.4f}" if cost is not None else "n/a"
+        print(f"{r['name']:32s} {acc:9.3f} {str(steps):>16s} {fit:9.4f} {perf_s:>15s} {cost_s:>15s}")
+    print(
+        "\nperf_component isolates task performance (accuracy + convergence "
+        "speed); cost_component isolates the edge-cost proxy (memory + "
+        "compute). A discovered candidate beating baselines mainly on "
+        "cost_component is 'cheaper, comparably good' rather than "
+        "'genuinely more accurate' -- report feedback point 4."
+    )
 
 
 if __name__ == "__main__":

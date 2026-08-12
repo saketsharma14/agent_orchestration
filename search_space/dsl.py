@@ -18,6 +18,17 @@ SecondMoment = Literal["none", "ema_sq", "max_sq"]
 Normalization = Literal["none", "sqrt_eps", "raw_eps"]
 WeightDecayMode = Literal["none", "decoupled", "coupled"]
 
+# Literal[...] is a static-typing hint only -- Python never enforces it at
+# runtime. These sets are the actual runtime guard, checked in validate().
+# Without this, a hallucinated value like grad_transform="adam" (not a real
+# option -- LLMs sometimes invent plausible-sounding ML jargon here) passes
+# validate() silently, then crashes the sandbox subprocess with a NameError
+# because render_optimizer_code's if/elif chain matches nothing.
+_VALID_GRAD_TRANSFORM = {"raw", "momentum", "sign_momentum"}
+_VALID_SECOND_MOMENT = {"none", "ema_sq", "max_sq"}
+_VALID_NORMALIZATION = {"none", "sqrt_eps", "raw_eps"}
+_VALID_WEIGHT_DECAY_MODE = {"none", "decoupled", "coupled"}
+
 
 @dataclass
 class OptimizerCandidate:
@@ -46,6 +57,14 @@ class OptimizerCandidate:
         the Proposer and Critic system prompts state -- if they drift apart,
         the Proposer ends up guessing at a constraint it was never actually
         given, which wastes generations on repeated, avoidable rejections."""
+        if self.grad_transform not in _VALID_GRAD_TRANSFORM:
+            return False, f"grad_transform must be one of {sorted(_VALID_GRAD_TRANSFORM)}, got {self.grad_transform!r}"
+        if self.second_moment not in _VALID_SECOND_MOMENT:
+            return False, f"second_moment must be one of {sorted(_VALID_SECOND_MOMENT)}, got {self.second_moment!r}"
+        if self.normalization not in _VALID_NORMALIZATION:
+            return False, f"normalization must be one of {sorted(_VALID_NORMALIZATION)}, got {self.normalization!r}"
+        if self.weight_decay_mode not in _VALID_WEIGHT_DECAY_MODE:
+            return False, f"weight_decay_mode must be one of {sorted(_VALID_WEIGHT_DECAY_MODE)}, got {self.weight_decay_mode!r}"
         if not (0.0 <= self.momentum_beta < 1.0):
             return False, "momentum_beta must be in [0, 1)"
         if not (0.0 <= self.second_moment_beta < 1.0):

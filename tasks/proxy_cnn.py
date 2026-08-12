@@ -22,6 +22,14 @@ EPOCHS = 3
 BATCH_SIZE = 64
 TARGET_LOSS = 0.3  # used for the "steps-to-threshold" convergence metric
 
+# Total optimizer steps a run can possibly take. Used by tasks/fitness.py as
+# the "never reached target loss" penalty value instead of an arbitrary large
+# constant -- see fitness.py docstring for why this distinction matters (an
+# arbitrary constant much larger than TOTAL_STEPS silently makes "converged
+# slowly" indistinguishable from "diverged").
+STEPS_PER_EPOCH = -(-TRAIN_SUBSET_SIZE // BATCH_SIZE)  # ceil division
+TOTAL_STEPS = STEPS_PER_EPOCH * EPOCHS
+
 
 class TinyCNN(nn.Module):
     def __init__(self):

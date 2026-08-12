@@ -1,19 +1,22 @@
 """Ablation: full structural search vs. numeric-only search.
 
-Runs two searches with the same generation budget:
+Runs N independent trials of two conditions, same generation budget each:
   (A) full DSL freedom -- the normal system
   (B) structure locked to AdamW's shape -- Proposer can only tune lr,
       momentum_beta, second_moment_beta, eps, weight_decay
 
-If (A)'s best fitness meaningfully beats (B)'s, that's direct evidence
-structural exploration is adding value beyond hyperparameter tuning --
-not just an impression from reading logs.
+This is what produced report Section 5.2's table -- re-run it any time the
+DSL, fitness function, or prompts change, rather than hand-copying old
+numbers forward. Every trial's best fitness is written to a CSV so the full
+distribution (not just mean/std) is available for the report appendix.
 
-Usage: python scripts/run_ablation.py [n_generations_per_condition]
+Usage: python scripts/run_ablation.py [n_trials] [n_generations_per_trial]
+Default: 5 trials x 15 generations per condition (matches the report).
 """
 
 from __future__ import annotations
 
+import csv
 import sys
 from pathlib import Path
 
@@ -21,8 +24,10 @@ REPO_ROOT = str(Path(__file__).resolve().parent.parent)
 sys.path.insert(0, REPO_ROOT)
 
 from orchestrator.loop import run_search
+from utils.stats import format_summary
 
-N_GENERATIONS = int(sys.argv[1]) if len(sys.argv) > 1 else 15
+N_TRIALS = int(sys.argv[1]) if len(sys.argv) > 1 else 5
+N_GENERATIONS = int(sys.argv[2]) if len(sys.argv) > 2 else 15
 
 # AdamW's structural signature -- numeric-only condition is locked to this
 ADAMW_STRUCTURE = {
@@ -33,41 +38,61 @@ ADAMW_STRUCTURE = {
     "bias_correction": True,
 }
 
+OUT_CSV = Path(REPO_ROOT) / "ablation_structural_vs_numeric_results.csv"
+
 
 def main():
-    print(f"=== Condition A: full structural search ({N_GENERATIONS} generations) ===")
-    archive_full = run_search(
-        n_generations=N_GENERATIONS,
-        locked_structure=None,
-        archive_path=str(Path(REPO_ROOT) / "archive_ablation_full.json"),
+    rows = []
+    full_scores, numeric_scores = [], []
+
+    for trial in range(N_TRIALS):
+        print(f"\n########## TRIAL {trial + 1}/{N_TRIALS} ##########")
+
+        print(f"=== Condition A: full structural search ({N_GENERATIONS} generations) ===")
+        archive_full = run_search(
+            n_generations=N_GENERATIONS,
+            locked_structure=None,
+            archive_path=str(Path(REPO_ROOT) / f"archive_ablation_full_trial{trial}.json"),
+        )
+        best_full = archive_full.top_k(1)
+        full_score = best_full[0].fitness_scalar if best_full else float("nan")
+
+        print(f"=== Condition B: numeric-only search, locked to AdamW structure ({N_GENERATIONS} generations) ===")
+        archive_numeric = run_search(
+            n_generations=N_GENERATIONS,
+            locked_structure=ADAMW_STRUCTURE,
+            archive_path=str(Path(REPO_ROOT) / f"archive_ablation_numeric_trial{trial}.json"),
+        )
+        best_numeric = archive_numeric.top_k(1)
+        numeric_score = best_numeric[0].fitness_scalar if best_numeric else float("nan")
+
+        gap = full_score - numeric_score
+        print(f"Trial {trial + 1}: full={full_score:.4f}  numeric_only={numeric_score:.4f}  gap={gap:+.4f}")
+
+        full_scores.append(full_score)
+        numeric_scores.append(numeric_score)
+        rows.append({"trial": trial + 1, "full": full_score, "numeric_only": numeric_score, "gap": gap})
+
+    with open(OUT_CSV, "w", newline="") as f:
+        writer = csv.DictWriter(f, fieldnames=["trial", "full", "numeric_only", "gap"])
+        writer.writeheader()
+        writer.writerows(rows)
+
+    print("\n=== Summary across all trials ===")
+    print(format_summary(full_scores, "Full structural search"))
+    print(format_summary(numeric_scores, "Numeric-only (locked to AdamW)"))
+    gaps = [r["gap"] for r in rows]
+    print(format_summary(gaps, "Gap (full - numeric_only)"))
+    wins = sum(1 for g in gaps if g > 1e-9)
+    ties = sum(1 for g in gaps if abs(g) <= 1e-9)
+    losses = sum(1 for g in gaps if g < -1e-9)
+    print(f"Full search won {wins}/{N_TRIALS} trials, tied {ties}, lost {losses}.")
+    print(f"\nPer-trial results written to {OUT_CSV}")
+    print(
+        "\nNote: this reports a mean gap across trials, not a significance "
+        "test (see report Section 5.2/7 -- N trials here supports a "
+        "'consistent, non-negative advantage' claim, not a p-value)."
     )
-
-    print(f"\n=== Condition B: numeric-only search, locked to AdamW structure ({N_GENERATIONS} generations) ===")
-    archive_numeric = run_search(
-        n_generations=N_GENERATIONS,
-        locked_structure=ADAMW_STRUCTURE,
-        archive_path=str(Path(REPO_ROOT) / "archive_ablation_numeric_only.json"),
-    )
-
-    best_full = archive_full.top_k(1)
-    best_numeric = archive_numeric.top_k(1)
-
-    print("\n=== Results ===")
-    if best_full:
-        print(f"Full structural search best fitness:  {best_full[0].fitness_scalar:.4f}  ({best_full[0].candidate.name})")
-    else:
-        print("Full structural search: no valid candidates found")
-    if best_numeric:
-        print(f"Numeric-only search best fitness:     {best_numeric[0].fitness_scalar:.4f}  ({best_numeric[0].candidate.name})")
-    else:
-        print("Numeric-only search: no valid candidates found")
-
-    if best_full and best_numeric:
-        gap = best_full[0].fitness_scalar - best_numeric[0].fitness_scalar
-        print(f"\nGap (full - numeric-only): {gap:+.4f}")
-        print("(A positive, meaningful gap is evidence structural search adds value beyond hyperparameter tuning.")
-        print(" A single run of each is a first look, not a proof -- re-run a couple times if time allows,")
-        print(" since either condition can get lucky/unlucky on one run.)")
 
 
 if __name__ == "__main__":
