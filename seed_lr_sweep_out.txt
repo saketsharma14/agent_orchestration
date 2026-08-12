@@ -1,0 +1,27 @@
+family                         lr    fitness  status
+------------------------------------------------------------
+adam_seed                3.00e-03     0.7540  ok  <- best
+adam_seed                1.00e-03     0.6690  ok
+adam_seed                3.00e-04     0.5120  ok
+
+adamw_seed               3.00e-03     0.7540  ok  <- best
+adamw_seed               1.00e-03     0.6690  ok
+adamw_seed               3.00e-04     0.5120  ok
+
+rmsprop_seed             3.00e-03     0.8310  ok  <- best
+rmsprop_seed             1.00e-02     0.7650  ok
+rmsprop_seed             3.00e-02    -9.9910  ok
+
+sgd_momentum_seed        1.00e-01     0.7830  ok  <- best
+sgd_momentum_seed        3.00e-02     0.6430  ok
+sgd_momentum_seed        1.00e-02    -9.3930  ok
+sgd_momentum_seed        3.00e-03    -9.7350  ok
+
+lion_seed                3.00e-04     0.6380  ok  <- best
+lion_seed                1.00e-04    -9.3000  ok
+lion_seed                3.00e-05    -9.4090  ok
+lion_seed                1.00e-05    -9.7660  ok
+
+Full sweep log written to /home/al4090/saket/seed_lr_sweep_results.json
+
+Compare the best-per-family fitness here against the single-LR numbers in the original report Section 5.1 table -- a large jump for sgd_momentum_seed / lion_seed specifically supports the diagnosis in tasks/fitness.py and search_space/seeds.py.

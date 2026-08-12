@@ -1,0 +1,121 @@
+[
+  {
+    "seed_family": "adam_seed",
+    "lr": 0.0003,
+    "fitness_scalar": 0.512,
+    "valid": true,
+    "note": ""
+  },
+  {
+    "seed_family": "adam_seed",
+    "lr": 0.001,
+    "fitness_scalar": 0.669,
+    "valid": true,
+    "note": ""
+  },
+  {
+    "seed_family": "adam_seed",
+    "lr": 0.003,
+    "fitness_scalar": 0.754,
+    "valid": true,
+    "note": ""
+  },
+  {
+    "seed_family": "adamw_seed",
+    "lr": 0.0003,
+    "fitness_scalar": 0.512,
+    "valid": true,
+    "note": ""
+  },
+  {
+    "seed_family": "adamw_seed",
+    "lr": 0.001,
+    "fitness_scalar": 0.669,
+    "valid": true,
+    "note": ""
+  },
+  {
+    "seed_family": "adamw_seed",
+    "lr": 0.003,
+    "fitness_scalar": 0.754,
+    "valid": true,
+    "note": ""
+  },
+  {
+    "seed_family": "rmsprop_seed",
+    "lr": 0.003,
+    "fitness_scalar": 0.8309999999999998,
+    "valid": true,
+    "note": ""
+  },
+  {
+    "seed_family": "rmsprop_seed",
+    "lr": 0.01,
+    "fitness_scalar": 0.765,
+    "valid": true,
+    "note": ""
+  },
+  {
+    "seed_family": "rmsprop_seed",
+    "lr": 0.03,
+    "fitness_scalar": -9.991,
+    "valid": true,
+    "note": ""
+  },
+  {
+    "seed_family": "sgd_momentum_seed",
+    "lr": 0.003,
+    "fitness_scalar": -9.735000000000001,
+    "valid": true,
+    "note": ""
+  },
+  {
+    "seed_family": "sgd_momentum_seed",
+    "lr": 0.01,
+    "fitness_scalar": -9.393,
+    "valid": true,
+    "note": ""
+  },
+  {
+    "seed_family": "sgd_momentum_seed",
+    "lr": 0.03,
+    "fitness_scalar": 0.6429999999999999,
+    "valid": true,
+    "note": ""
+  },
+  {
+    "seed_family": "sgd_momentum_seed",
+    "lr": 0.1,
+    "fitness_scalar": 0.783,
+    "valid": true,
+    "note": ""
+  },
+  {
+    "seed_family": "lion_seed",
+    "lr": 1e-05,
+    "fitness_scalar": -9.766,
+    "valid": true,
+    "note": ""
+  },
+  {
+    "seed_family": "lion_seed",
+    "lr": 3e-05,
+    "fitness_scalar": -9.409,
+    "valid": true,
+    "note": ""
+  },
+  {
+    "seed_family": "lion_seed",
+    "lr": 0.0001,
+    "fitness_scalar": -9.3,
+    "valid": true,
+    "note": ""
+  },
+  {
+    "seed_family": "lion_seed",
+    "lr": 0.0003,
+    "fitness_scalar": 0.6379999999999999,
+    "valid": true,
+    "note": ""
+  }
+]

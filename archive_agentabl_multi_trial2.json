@@ -1,0 +1,484 @@
+[
+  {
+    "candidate": {
+      "name": "adam_seed",
+      "grad_transform": "momentum",
+      "momentum_beta": 0.9,
+      "second_moment": "ema_sq",
+      "second_moment_beta": 0.999,
+      "normalization": "sqrt_eps",
+      "eps": 1e-08,
+      "bias_correction": true,
+      "weight_decay_mode": "none",
+      "weight_decay": 0.0,
+      "lr": 0.003
+    },
+    "fitness_scalar": 0.7529999999999999,
+    "fitness_vector": {
+      "accuracy": 0.958,
+      "steps_to_target": 45,
+      "memory_cost": 2,
+      "compute_cost": 3,
+      "wall_time_s": 1.0269670486450195
+    },
+    "valid": true,
+    "note": ""
+  },
+  {
+    "candidate": {
+      "name": "adamw_seed",
+      "grad_transform": "momentum",
+      "momentum_beta": 0.9,
+      "second_moment": "ema_sq",
+      "second_moment_beta": 0.999,
+      "normalization": "sqrt_eps",
+      "eps": 1e-08,
+      "bias_correction": true,
+      "weight_decay_mode": "decoupled",
+      "weight_decay": 0.01,
+      "lr": 0.003
+    },
+    "fitness_scalar": 0.754,
+    "fitness_vector": {
+      "accuracy": 0.959,
+      "steps_to_target": 45,
+      "memory_cost": 2,
+      "compute_cost": 3,
+      "wall_time_s": 0.9804167747497559
+    },
+    "valid": true,
+    "note": ""
+  },
+  {
+    "candidate": {
+      "name": "rmsprop_seed",
+      "grad_transform": "raw",
+      "momentum_beta": 0.0,
+      "second_moment": "ema_sq",
+      "second_moment_beta": 0.99,
+      "normalization": "sqrt_eps",
+      "eps": 1e-08,
+      "bias_correction": false,
+      "weight_decay_mode": "none",
+      "weight_decay": 0.0,
+      "lr": 0.003
+    },
+    "fitness_scalar": 0.8309999999999998,
+    "fitness_vector": {
+      "accuracy": 0.949,
+      "steps_to_target": 28,
+      "memory_cost": 1,
+      "compute_cost": 2,
+      "wall_time_s": 0.983309268951416
+    },
+    "valid": true,
+    "note": ""
+  },
+  {
+    "candidate": {
+      "name": "sgd_momentum_seed",
+      "grad_transform": "momentum",
+      "momentum_beta": 0.9,
+      "second_moment": "none",
+      "second_moment_beta": 0.0,
+      "normalization": "none",
+      "eps": 1e-08,
+      "bias_correction": false,
+      "weight_decay_mode": "none",
+      "weight_decay": 0.0,
+      "lr": 0.1
+    },
+    "fitness_scalar": 0.783,
+    "fitness_vector": {
+      "accuracy": 0.915,
+      "steps_to_target": 82,
+      "memory_cost": 1,
+      "compute_cost": 0,
+      "wall_time_s": 0.9126505851745605
+    },
+    "valid": true,
+    "note": ""
+  },
+  {
+    "candidate": {
+      "name": "lion_seed",
+      "grad_transform": "sign_momentum",
+      "momentum_beta": 0.9,
+      "second_moment": "none",
+      "second_moment_beta": 0.0,
+      "normalization": "none",
+      "eps": 1e-08,
+      "bias_correction": false,
+      "weight_decay_mode": "decoupled",
+      "weight_decay": 0.01,
+      "lr": 0.0003
+    },
+    "fitness_scalar": 0.6379999999999999,
+    "fitness_vector": {
+      "accuracy": 0.853,
+      "steps_to_target": 165,
+      "memory_cost": 1,
+      "compute_cost": 0,
+      "wall_time_s": 0.9302175045013428
+    },
+    "valid": true,
+    "note": ""
+  },
+  {
+    "candidate": {
+      "name": "sgd_sign_momentum_seed",
+      "grad_transform": "sign_momentum",
+      "momentum_beta": 0.9,
+      "second_moment": "none",
+      "second_moment_beta": 0.0,
+      "normalization": "none",
+      "eps": 1e-08,
+      "bias_correction": false,
+      "weight_decay_mode": "none",
+      "weight_decay": 0.0,
+      "lr": 0.1
+    },
+    "fitness_scalar": -9.943000000000001,
+    "fitness_vector": {
+      "accuracy": 0.107,
+      "steps_to_target": 10000,
+      "memory_cost": 1,
+      "compute_cost": 0,
+      "wall_time_s": 0.9261817932128906
+    },
+    "valid": true,
+    "note": ""
+  },
+  {
+    "candidate": {
+      "name": "candidate_18",
+      "grad_transform": "raw",
+      "momentum_beta": 0.0,
+      "second_moment": "max_sq",
+      "second_moment_beta": 0.99,
+      "normalization": "sqrt_eps",
+      "eps": 1e-07,
+      "bias_correction": false,
+      "weight_decay_mode": "none",
+      "weight_decay": 0.0,
+      "lr": 0.003
+    },
+    "fitness_scalar": 0.7469999999999999,
+    "fitness_vector": {
+      "accuracy": 0.894,
+      "steps_to_target": 57,
+      "memory_cost": 1,
+      "compute_cost": 2,
+      "wall_time_s": 0.956902027130127
+    },
+    "valid": true,
+    "note": ""
+  },
+  {
+    "candidate": {
+      "name": "candidate_19",
+      "grad_transform": "momentum",
+      "momentum_beta": 0.8,
+      "second_moment": "ema_sq",
+      "second_moment_beta": 0.999,
+      "normalization": "sqrt_eps",
+      "eps": 1e-07,
+      "bias_correction": true,
+      "weight_decay_mode": "decoupled",
+      "weight_decay": 0.01,
+      "lr": 0.001
+    },
+    "fitness_scalar": 0.6800000000000002,
+    "fitness_vector": {
+      "accuracy": 0.914,
+      "steps_to_target": 74,
+      "memory_cost": 2,
+      "compute_cost": 3,
+      "wall_time_s": 0.9703896045684814
+    },
+    "valid": true,
+    "note": ""
+  },
+  {
+    "candidate": {
+      "name": "candidate_19",
+      "grad_transform": "momentum",
+      "momentum_beta": 0.9,
+      "second_moment": "ema_sq",
+      "second_moment_beta": 0.99,
+      "normalization": "sqrt_eps",
+      "eps": 1e-08,
+      "bias_correction": true,
+      "weight_decay_mode": "none",
+      "weight_decay": 0.0,
+      "lr": 0.002
+    },
+    "fitness_scalar": 0.7289999999999999,
+    "fitness_vector": {
+      "accuracy": 0.941,
+      "steps_to_target": 52,
+      "memory_cost": 2,
+      "compute_cost": 3,
+      "wall_time_s": 1.0230340957641602
+    },
+    "valid": true,
+    "note": ""
+  },
+  {
+    "candidate": {
+      "name": "candidate_19",
+      "grad_transform": "raw",
+      "momentum_beta": 0.0,
+      "second_moment": "none",
+      "second_moment_beta": 0.0,
+      "normalization": "none",
+      "eps": 1e-07,
+      "bias_correction": false,
+      "weight_decay_mode": "none",
+      "weight_decay": 0.0,
+      "lr": 0.003
+    },
+    "fitness_scalar": -9.646,
+    "fitness_vector": {
+      "accuracy": 0.354,
+      "steps_to_target": 10000,
+      "memory_cost": 0,
+      "compute_cost": 0,
+      "wall_time_s": 0.9219605922698975
+    },
+    "valid": true,
+    "note": ""
+  },
+  {
+    "candidate": {
+      "name": "candidate_20",
+      "grad_transform": "momentum",
+      "momentum_beta": 0.9,
+      "second_moment": "ema_sq",
+      "second_moment_beta": 0.999,
+      "normalization": "sqrt_eps",
+      "eps": 1e-08,
+      "bias_correction": true,
+      "weight_decay_mode": "decoupled",
+      "weight_decay": 0.005,
+      "lr": 0.003
+    },
+    "fitness_scalar": 0.7529999999999999,
+    "fitness_vector": {
+      "accuracy": 0.958,
+      "steps_to_target": 45,
+      "memory_cost": 2,
+      "compute_cost": 3,
+      "wall_time_s": 0.9831662178039551
+    },
+    "valid": true,
+    "note": ""
+  },
+  {
+    "candidate": {
+      "name": "candidate_20",
+      "grad_transform": "sign_momentum",
+      "momentum_beta": 0.9,
+      "second_moment": "max_sq",
+      "second_moment_beta": 0.999,
+      "normalization": "sqrt_eps",
+      "eps": 1e-07,
+      "bias_correction": true,
+      "weight_decay_mode": "none",
+      "weight_decay": 0.0,
+      "lr": 0.003
+    },
+    "fitness_scalar": -10.048,
+    "fitness_vector": {
+      "accuracy": 0.112,
+      "steps_to_target": 10000,
+      "memory_cost": 2,
+      "compute_cost": 3,
+      "wall_time_s": 1.0634362697601318
+    },
+    "valid": true,
+    "note": ""
+  },
+  {
+    "candidate": {
+      "name": "candidate_20",
+      "grad_transform": "sign_momentum",
+      "momentum_beta": 0.9,
+      "second_moment": "ema_sq",
+      "second_moment_beta": 0.999,
+      "normalization": "sqrt_eps",
+      "eps": 1e-08,
+      "bias_correction": false,
+      "weight_decay_mode": "decoupled",
+      "weight_decay": 0.01,
+      "lr": 0.003
+    },
+    "fitness_scalar": -10.025999999999998,
+    "fitness_vector": {
+      "accuracy": 0.114,
+      "steps_to_target": 10000,
+      "memory_cost": 2,
+      "compute_cost": 2,
+      "wall_time_s": 1.058318853378296
+    },
+    "valid": true,
+    "note": ""
+  },
+  {
+    "candidate": {
+      "name": "candidate_20",
+      "grad_transform": "momentum",
+      "momentum_beta": 0.9,
+      "second_moment": "ema_sq",
+      "second_moment_beta": 0.999,
+      "normalization": "sqrt_eps",
+      "eps": 1e-08,
+      "bias_correction": true,
+      "weight_decay_mode": "coupled",
+      "weight_decay": 0.01,
+      "lr": 0.002
+    },
+    "fitness_scalar": 0.732,
+    "fitness_vector": {
+      "accuracy": 0.937,
+      "steps_to_target": 45,
+      "memory_cost": 2,
+      "compute_cost": 3,
+      "wall_time_s": 1.0149281024932861
+    },
+    "valid": true,
+    "note": ""
+  },
+  {
+    "candidate": {
+      "name": "candidate_21",
+      "grad_transform": "sign_momentum",
+      "momentum_beta": 0.9,
+      "second_moment": "none",
+      "second_moment_beta": 0.0,
+      "normalization": "sqrt_eps",
+      "eps": 1e-08,
+      "bias_correction": true,
+      "weight_decay_mode": "decoupled",
+      "weight_decay": 0.01,
+      "lr": 0.002
+    },
+    "fitness_scalar": -999.0,
+    "fitness_vector": {},
+    "valid": false,
+    "note": "normalization requires a second-moment estimate"
+  },
+  {
+    "candidate": {
+      "name": "candidate_21",
+      "grad_transform": "momentum",
+      "momentum_beta": 0.95,
+      "second_moment": "ema_sq",
+      "second_moment_beta": 0.999,
+      "normalization": "sqrt_eps",
+      "eps": 1e-07,
+      "bias_correction": true,
+      "weight_decay_mode": "decoupled",
+      "weight_decay": 0.02,
+      "lr": 0.004
+    },
+    "fitness_scalar": 0.74,
+    "fitness_vector": {
+      "accuracy": 0.948,
+      "steps_to_target": 48,
+      "memory_cost": 2,
+      "compute_cost": 3,
+      "wall_time_s": 1.0020899772644043
+    },
+    "valid": true,
+    "note": ""
+  },
+  {
+    "candidate": {
+      "name": "candidate_21",
+      "grad_transform": "sign_momentum",
+      "momentum_beta": 0.9,
+      "second_moment": "none",
+      "second_moment_beta": 0.0,
+      "normalization": "none",
+      "eps": 1e-08,
+      "bias_correction": false,
+      "weight_decay_mode": "decoupled",
+      "weight_decay": 0.01,
+      "lr": 0.0003
+    },
+    "fitness_scalar": 0.6379999999999999,
+    "fitness_vector": {
+      "accuracy": 0.853,
+      "steps_to_target": 165,
+      "memory_cost": 1,
+      "compute_cost": 0,
+      "wall_time_s": 0.9401726722717285
+    },
+    "valid": true,
+    "note": ""
+  },
+  {
+    "candidate": {
+      "name": "candidate_21",
+      "grad_transform": "sign_momentum",
+      "momentum_beta": 0.9,
+      "second_moment": "none",
+      "second_moment_beta": 0.0,
+      "normalization": "sqrt_eps",
+      "eps": 1e-07,
+      "bias_correction": false,
+      "weight_decay_mode": "decoupled",
+      "weight_decay": 0.01,
+      "lr": 0.003
+    },
+    "fitness_scalar": -999.0,
+    "fitness_vector": {},
+    "valid": false,
+    "note": "normalization requires a second-moment estimate"
+  },
+  {
+    "candidate": {
+      "name": "candidate_21",
+      "grad_transform": "momentum",
+      "momentum_beta": 0.95,
+      "second_moment": "ema_sq",
+      "second_moment_beta": 0.999,
+      "normalization": "sqrt_eps",
+      "eps": 1e-08,
+      "bias_correction": true,
+      "weight_decay_mode": "decoupled",
+      "weight_decay": 0.05,
+      "lr": 0.003
+    },
+    "fitness_scalar": 0.742,
+    "fitness_vector": {
+      "accuracy": 0.95,
+      "steps_to_target": 48,
+      "memory_cost": 2,
+      "compute_cost": 3,
+      "wall_time_s": 1.0548408031463623
+    },
+    "valid": true,
+    "note": ""
+  },
+  {
+    "candidate": {
+      "name": "candidate_21",
+      "grad_transform": "sign_momentum",
+      "momentum_beta": 0.9,
+      "second_moment": "none",
+      "second_moment_beta": 0.0,
+      "normalization": "sqrt_eps",
+      "eps": 1e-08,
+      "bias_correction": true,
+      "weight_decay_mode": "decoupled",
+      "weight_decay": 0.01,
+      "lr": 0.002
+    },
+    "fitness_scalar": -999.0,
+    "fitness_vector": {},
+    "valid": false,
+    "note": "normalization requires a second-moment estimate"
+  }
+]

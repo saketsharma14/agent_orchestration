@@ -1,0 +1,13 @@
+run,best_fitness,accuracy,steps_to_target,structural_niche,n_niches_explored
+1,0.831,0.949,28,raw/ema_sq/sqrt_eps/none/bc=False,14
+2,0.831,0.949,28,raw/ema_sq/sqrt_eps/none/bc=False,22
+3,0.831,0.949,28,raw/ema_sq/sqrt_eps/none/bc=False,15
+4,0.834,0.952,28,raw/ema_sq/sqrt_eps/none/bc=False,14
+5,0.831,0.949,28,raw/ema_sq/sqrt_eps/none/bc=False,11
+6,0.832,0.95,28,raw/ema_sq/sqrt_eps/none/bc=False,18
+7,0.831,0.949,28,raw/ema_sq/sqrt_eps/none/bc=False,17
+8,0.831,0.949,28,raw/ema_sq/sqrt_eps/none/bc=False,13
+9,0.8789999999999999,0.957,28,sign_momentum/none/none/decoupled/bc=False,17
+10,0.831,0.949,28,raw/ema_sq/sqrt_eps/none/bc=False,21
+11,0.831,0.949,28,raw/ema_sq/sqrt_eps/none/bc=False,19
+12,0.833,0.95,27,raw/ema_sq/sqrt_eps/none/bc=False,16

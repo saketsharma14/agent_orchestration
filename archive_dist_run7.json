@@ -1,0 +1,931 @@
+[
+  {
+    "candidate": {
+      "name": "adam_seed",
+      "grad_transform": "momentum",
+      "momentum_beta": 0.9,
+      "second_moment": "ema_sq",
+      "second_moment_beta": 0.999,
+      "normalization": "sqrt_eps",
+      "eps": 1e-08,
+      "bias_correction": true,
+      "weight_decay_mode": "none",
+      "weight_decay": 0.0,
+      "lr": 0.003
+    },
+    "fitness_scalar": 0.7529999999999999,
+    "fitness_vector": {
+      "accuracy": 0.958,
+      "steps_to_target": 45,
+      "memory_cost": 2,
+      "compute_cost": 3,
+      "wall_time_s": 0.9892299175262451,
+      "performance_component": 0.9129999999999999,
+      "cost_component": -0.16
+    },
+    "valid": true,
+    "note": ""
+  },
+  {
+    "candidate": {
+      "name": "adamw_seed",
+      "grad_transform": "momentum",
+      "momentum_beta": 0.9,
+      "second_moment": "ema_sq",
+      "second_moment_beta": 0.999,
+      "normalization": "sqrt_eps",
+      "eps": 1e-08,
+      "bias_correction": true,
+      "weight_decay_mode": "decoupled",
+      "weight_decay": 0.01,
+      "lr": 0.003
+    },
+    "fitness_scalar": 0.7539999999999999,
+    "fitness_vector": {
+      "accuracy": 0.959,
+      "steps_to_target": 45,
+      "memory_cost": 2,
+      "compute_cost": 3,
+      "wall_time_s": 0.9980158805847168,
+      "performance_component": 0.9139999999999999,
+      "cost_component": -0.16
+    },
+    "valid": true,
+    "note": ""
+  },
+  {
+    "candidate": {
+      "name": "rmsprop_seed",
+      "grad_transform": "raw",
+      "momentum_beta": 0.0,
+      "second_moment": "ema_sq",
+      "second_moment_beta": 0.99,
+      "normalization": "sqrt_eps",
+      "eps": 1e-08,
+      "bias_correction": false,
+      "weight_decay_mode": "none",
+      "weight_decay": 0.0,
+      "lr": 0.003
+    },
+    "fitness_scalar": 0.831,
+    "fitness_vector": {
+      "accuracy": 0.949,
+      "steps_to_target": 28,
+      "memory_cost": 1,
+      "compute_cost": 2,
+      "wall_time_s": 0.9786531925201416,
+      "performance_component": 0.9209999999999999,
+      "cost_component": -0.09
+    },
+    "valid": true,
+    "note": ""
+  },
+  {
+    "candidate": {
+      "name": "sgd_momentum_seed",
+      "grad_transform": "momentum",
+      "momentum_beta": 0.9,
+      "second_moment": "none",
+      "second_moment_beta": 0.0,
+      "normalization": "none",
+      "eps": 1e-08,
+      "bias_correction": false,
+      "weight_decay_mode": "none",
+      "weight_decay": 0.0,
+      "lr": 0.1
+    },
+    "fitness_scalar": 0.783,
+    "fitness_vector": {
+      "accuracy": 0.915,
+      "steps_to_target": 82,
+      "memory_cost": 1,
+      "compute_cost": 0,
+      "wall_time_s": 0.9030191898345947,
+      "performance_component": 0.8330000000000001,
+      "cost_component": -0.05
+    },
+    "valid": true,
+    "note": ""
+  },
+  {
+    "candidate": {
+      "name": "lion_seed",
+      "grad_transform": "sign_momentum",
+      "momentum_beta": 0.9,
+      "second_moment": "none",
+      "second_moment_beta": 0.0,
+      "normalization": "none",
+      "eps": 1e-08,
+      "bias_correction": false,
+      "weight_decay_mode": "decoupled",
+      "weight_decay": 0.01,
+      "lr": 0.0003
+    },
+    "fitness_scalar": 0.6379999999999999,
+    "fitness_vector": {
+      "accuracy": 0.853,
+      "steps_to_target": 165,
+      "memory_cost": 1,
+      "compute_cost": 0,
+      "wall_time_s": 0.9097311496734619,
+      "performance_component": 0.688,
+      "cost_component": -0.05
+    },
+    "valid": true,
+    "note": ""
+  },
+  {
+    "candidate": {
+      "name": "adagrad_seed",
+      "grad_transform": "raw",
+      "momentum_beta": 0.0,
+      "second_moment": "ema_sq",
+      "second_moment_beta": 0.999,
+      "normalization": "sqrt_eps",
+      "eps": 1e-08,
+      "bias_correction": true,
+      "weight_decay_mode": "none",
+      "weight_decay": 0.0,
+      "lr": 0.01
+    },
+    "fitness_scalar": 0.83,
+    "fitness_vector": {
+      "accuracy": 0.962,
+      "steps_to_target": 22,
+      "memory_cost": 1,
+      "compute_cost": 3,
+      "wall_time_s": 0.9955184459686279,
+      "performance_component": 0.94,
+      "cost_component": -0.11
+    },
+    "valid": true,
+    "note": ""
+  },
+  {
+    "candidate": {
+      "name": "sign_adamw",
+      "grad_transform": "sign_momentum",
+      "momentum_beta": 0.9,
+      "second_moment": "ema_sq",
+      "second_moment_beta": 0.999,
+      "normalization": "sqrt_eps",
+      "eps": 1e-08,
+      "bias_correction": true,
+      "weight_decay_mode": "decoupled",
+      "weight_decay": 0.001,
+      "lr": 0.003
+    },
+    "fitness_scalar": -0.6140000000000001,
+    "fitness_vector": {
+      "accuracy": 0.113,
+      "steps_to_target": 567,
+      "memory_cost": 2,
+      "compute_cost": 3,
+      "wall_time_s": 0.9841864109039307,
+      "performance_component": -0.45400000000000007,
+      "cost_component": -0.16
+    },
+    "valid": true,
+    "note": ""
+  },
+  {
+    "candidate": {
+      "name": "sign_adam",
+      "grad_transform": "sign_momentum",
+      "momentum_beta": 0.9,
+      "second_moment": "ema_sq",
+      "second_moment_beta": 0.999,
+      "normalization": "sqrt_eps",
+      "eps": 1e-08,
+      "bias_correction": true,
+      "weight_decay_mode": "none",
+      "weight_decay": 0.0,
+      "lr": 0.003
+    },
+    "fitness_scalar": -0.6140000000000001,
+    "fitness_vector": {
+      "accuracy": 0.113,
+      "steps_to_target": 567,
+      "memory_cost": 2,
+      "compute_cost": 3,
+      "wall_time_s": 1.0436222553253174,
+      "performance_component": -0.45400000000000007,
+      "cost_component": -0.16
+    },
+    "valid": true,
+    "note": ""
+  },
+  {
+    "candidate": {
+      "name": "candidate_20",
+      "grad_transform": "sign_momentum",
+      "momentum_beta": 0.9,
+      "second_moment": "ema_sq",
+      "second_moment_beta": 0.999,
+      "normalization": "sqrt_eps",
+      "eps": 1e-08,
+      "bias_correction": true,
+      "weight_decay_mode": "decoupled",
+      "weight_decay": 0.01,
+      "lr": 0.003
+    },
+    "fitness_scalar": -0.6140000000000001,
+    "fitness_vector": {
+      "accuracy": 0.113,
+      "steps_to_target": 567,
+      "memory_cost": 2,
+      "compute_cost": 3,
+      "wall_time_s": 0.9967775344848633,
+      "performance_component": -0.45400000000000007,
+      "cost_component": -0.16
+    },
+    "valid": true,
+    "note": ""
+  },
+  {
+    "candidate": {
+      "name": "sgd_raw_seed",
+      "grad_transform": "raw",
+      "momentum_beta": 0.0,
+      "second_moment": "none",
+      "second_moment_beta": 0.0,
+      "normalization": "sqrt_eps",
+      "eps": 1e-08,
+      "bias_correction": false,
+      "weight_decay_mode": "none",
+      "weight_decay": 0.0,
+      "lr": 0.01
+    },
+    "fitness_scalar": -999.0,
+    "fitness_vector": {},
+    "valid": false,
+    "note": "normalization requires a second-moment estimate"
+  },
+  {
+    "candidate": {
+      "name": "candidate_24",
+      "grad_transform": "momentum",
+      "momentum_beta": 0.95,
+      "second_moment": "ema_sq",
+      "second_moment_beta": 0.999,
+      "normalization": "sqrt_eps",
+      "eps": 1e-08,
+      "bias_correction": true,
+      "weight_decay_mode": "none",
+      "weight_decay": 0.0,
+      "lr": 0.002
+    },
+    "fitness_scalar": 0.723,
+    "fitness_vector": {
+      "accuracy": 0.935,
+      "steps_to_target": 52,
+      "memory_cost": 2,
+      "compute_cost": 3,
+      "wall_time_s": 0.9610686302185059,
+      "performance_component": 0.883,
+      "cost_component": -0.16
+    },
+    "valid": true,
+    "note": ""
+  },
+  {
+    "candidate": {
+      "name": "sgd_adamw",
+      "grad_transform": "momentum",
+      "momentum_beta": 0.9,
+      "second_moment": "ema_sq",
+      "second_moment_beta": 0.999,
+      "normalization": "sqrt_eps",
+      "eps": 1e-07,
+      "bias_correction": true,
+      "weight_decay_mode": "decoupled",
+      "weight_decay": 0.005,
+      "lr": 0.002
+    },
+    "fitness_scalar": 0.7409999999999999,
+    "fitness_vector": {
+      "accuracy": 0.946,
+      "steps_to_target": 45,
+      "memory_cost": 2,
+      "compute_cost": 3,
+      "wall_time_s": 1.0523550510406494,
+      "performance_component": 0.9009999999999999,
+      "cost_component": -0.16
+    },
+    "valid": true,
+    "note": ""
+  },
+  {
+    "candidate": {
+      "name": "lion_adamw",
+      "grad_transform": "sign_momentum",
+      "momentum_beta": 0.9,
+      "second_moment": "ema_sq",
+      "second_moment_beta": 0.999,
+      "normalization": "sqrt_eps",
+      "eps": 1e-08,
+      "bias_correction": true,
+      "weight_decay_mode": "decoupled",
+      "weight_decay": 0.01,
+      "lr": 0.003
+    },
+    "fitness_scalar": -0.6140000000000001,
+    "fitness_vector": {
+      "accuracy": 0.113,
+      "steps_to_target": 567,
+      "memory_cost": 2,
+      "compute_cost": 3,
+      "wall_time_s": 1.0195114612579346,
+      "performance_component": -0.45400000000000007,
+      "cost_component": -0.16
+    },
+    "valid": true,
+    "note": ""
+  },
+  {
+    "candidate": {
+      "name": "sign_momentum_seed",
+      "grad_transform": "sign_momentum",
+      "momentum_beta": 0.9,
+      "second_moment": "none",
+      "second_moment_beta": 0.0,
+      "normalization": "sqrt_eps",
+      "eps": 1e-08,
+      "bias_correction": false,
+      "weight_decay_mode": "coupled",
+      "weight_decay": 0.001,
+      "lr": 0.001
+    },
+    "fitness_scalar": -999.0,
+    "fitness_vector": {},
+    "valid": false,
+    "note": "normalization requires a second-moment estimate"
+  },
+  {
+    "candidate": {
+      "name": "candidate_18",
+      "grad_transform": "raw",
+      "momentum_beta": 0.0,
+      "second_moment": "ema_sq",
+      "second_moment_beta": 0.995,
+      "normalization": "sqrt_eps",
+      "eps": 1e-07,
+      "bias_correction": true,
+      "weight_decay_mode": "none",
+      "weight_decay": 0.0,
+      "lr": 0.005
+    },
+    "fitness_scalar": 0.8109999999999999,
+    "fitness_vector": {
+      "accuracy": 0.948,
+      "steps_to_target": 27,
+      "memory_cost": 1,
+      "compute_cost": 3,
+      "wall_time_s": 1.0144939422607422,
+      "performance_component": 0.9209999999999999,
+      "cost_component": -0.11
+    },
+    "valid": true,
+    "note": ""
+  },
+  {
+    "candidate": {
+      "name": "adam_seed",
+      "grad_transform": "momentum",
+      "momentum_beta": 0.9,
+      "second_moment": "ema_sq",
+      "second_moment_beta": 0.999,
+      "normalization": "sqrt_eps",
+      "eps": 1e-08,
+      "bias_correction": true,
+      "weight_decay_mode": "none",
+      "weight_decay": 0.0,
+      "lr": 0.003
+    },
+    "fitness_scalar": 0.7529999999999999,
+    "fitness_vector": {
+      "accuracy": 0.958,
+      "steps_to_target": 45,
+      "memory_cost": 2,
+      "compute_cost": 3,
+      "wall_time_s": 1.0489225387573242,
+      "performance_component": 0.9129999999999999,
+      "cost_component": -0.16
+    },
+    "valid": true,
+    "note": ""
+  },
+  {
+    "candidate": {
+      "name": "adam_raw_seed",
+      "grad_transform": "momentum",
+      "momentum_beta": 0.9,
+      "second_moment": "ema_sq",
+      "second_moment_beta": 0.999,
+      "normalization": "sqrt_eps",
+      "eps": 1e-08,
+      "bias_correction": true,
+      "weight_decay_mode": "none",
+      "weight_decay": 0.0,
+      "lr": 0.003
+    },
+    "fitness_scalar": 0.7539999999999999,
+    "fitness_vector": {
+      "accuracy": 0.959,
+      "steps_to_target": 45,
+      "memory_cost": 2,
+      "compute_cost": 3,
+      "wall_time_s": 0.9833688735961914,
+      "performance_component": 0.9139999999999999,
+      "cost_component": -0.16
+    },
+    "valid": true,
+    "note": ""
+  },
+  {
+    "candidate": {
+      "name": "adam_seed",
+      "grad_transform": "momentum",
+      "momentum_beta": 0.9,
+      "second_moment": "ema_sq",
+      "second_moment_beta": 0.999,
+      "normalization": "sqrt_eps",
+      "eps": 1e-08,
+      "bias_correction": true,
+      "weight_decay_mode": "none",
+      "weight_decay": 0.0,
+      "lr": 0.003
+    },
+    "fitness_scalar": 0.7529999999999999,
+    "fitness_vector": {
+      "accuracy": 0.958,
+      "steps_to_target": 45,
+      "memory_cost": 2,
+      "compute_cost": 3,
+      "wall_time_s": 1.0409636497497559,
+      "performance_component": 0.9129999999999999,
+      "cost_component": -0.16
+    },
+    "valid": true,
+    "note": ""
+  },
+  {
+    "candidate": {
+      "name": "adam_seed",
+      "grad_transform": "momentum",
+      "momentum_beta": 0.9,
+      "second_moment": "ema_sq",
+      "second_moment_beta": 0.999,
+      "normalization": "sqrt_eps",
+      "eps": 1e-08,
+      "bias_correction": true,
+      "weight_decay_mode": "none",
+      "weight_decay": 0.0,
+      "lr": 0.003
+    },
+    "fitness_scalar": 0.7529999999999999,
+    "fitness_vector": {
+      "accuracy": 0.958,
+      "steps_to_target": 45,
+      "memory_cost": 2,
+      "compute_cost": 3,
+      "wall_time_s": 1.0615394115447998,
+      "performance_component": 0.9129999999999999,
+      "cost_component": -0.16
+    },
+    "valid": true,
+    "note": ""
+  },
+  {
+    "candidate": {
+      "name": "adam_seed",
+      "grad_transform": "momentum",
+      "momentum_beta": 0.9,
+      "second_moment": "ema_sq",
+      "second_moment_beta": 0.999,
+      "normalization": "sqrt_eps",
+      "eps": 1e-08,
+      "bias_correction": true,
+      "weight_decay_mode": "none",
+      "weight_decay": 0.0,
+      "lr": 0.003
+    },
+    "fitness_scalar": 0.7539999999999999,
+    "fitness_vector": {
+      "accuracy": 0.959,
+      "steps_to_target": 45,
+      "memory_cost": 2,
+      "compute_cost": 3,
+      "wall_time_s": 1.0847392082214355,
+      "performance_component": 0.9139999999999999,
+      "cost_component": -0.16
+    },
+    "valid": true,
+    "note": ""
+  },
+  {
+    "candidate": {
+      "name": "sgd_raw",
+      "grad_transform": "raw",
+      "momentum_beta": 0.0,
+      "second_moment": "none",
+      "second_moment_beta": 0.0,
+      "normalization": "none",
+      "eps": 1e-08,
+      "bias_correction": false,
+      "weight_decay_mode": "none",
+      "weight_decay": 0.0,
+      "lr": 0.1
+    },
+    "fitness_scalar": 0.821,
+    "fitness_vector": {
+      "accuracy": 0.889,
+      "steps_to_target": 68,
+      "memory_cost": 0,
+      "compute_cost": 0,
+      "wall_time_s": 0.926347017288208,
+      "performance_component": 0.821,
+      "cost_component": -0.0
+    },
+    "valid": true,
+    "note": ""
+  },
+  {
+    "candidate": {
+      "name": "lion_raw",
+      "grad_transform": "sign_momentum",
+      "momentum_beta": 0.9,
+      "second_moment": "none",
+      "second_moment_beta": 0.0,
+      "normalization": "none",
+      "eps": 1e-08,
+      "bias_correction": false,
+      "weight_decay_mode": "coupled",
+      "weight_decay": 0.05,
+      "lr": 0.0003
+    },
+    "fitness_scalar": 0.2039999999999999,
+    "fitness_vector": {
+      "accuracy": 0.821,
+      "steps_to_target": 567,
+      "memory_cost": 1,
+      "compute_cost": 0,
+      "wall_time_s": 1.010680913925171,
+      "performance_component": 0.2539999999999999,
+      "cost_component": -0.05
+    },
+    "valid": true,
+    "note": ""
+  },
+  {
+    "candidate": {
+      "name": "sgd_adamw",
+      "grad_transform": "momentum",
+      "momentum_beta": 0.9,
+      "second_moment": "ema_sq",
+      "second_moment_beta": 0.999,
+      "normalization": "sqrt_eps",
+      "eps": 1e-08,
+      "bias_correction": true,
+      "weight_decay_mode": "decoupled",
+      "weight_decay": 0.05,
+      "lr": 0.01
+    },
+    "fitness_scalar": 0.7839999999999999,
+    "fitness_vector": {
+      "accuracy": 0.967,
+      "steps_to_target": 23,
+      "memory_cost": 2,
+      "compute_cost": 3,
+      "wall_time_s": 0.995753288269043,
+      "performance_component": 0.944,
+      "cost_component": -0.16
+    },
+    "valid": true,
+    "note": ""
+  },
+  {
+    "candidate": {
+      "name": "rmsprop_adamw",
+      "grad_transform": "raw",
+      "momentum_beta": 0.9,
+      "second_moment": "ema_sq",
+      "second_moment_beta": 0.999,
+      "normalization": "sqrt_eps",
+      "eps": 1e-08,
+      "bias_correction": true,
+      "weight_decay_mode": "decoupled",
+      "weight_decay": 0.05,
+      "lr": 0.003
+    },
+    "fitness_scalar": 0.7989999999999999,
+    "fitness_vector": {
+      "accuracy": 0.949,
+      "steps_to_target": 40,
+      "memory_cost": 1,
+      "compute_cost": 3,
+      "wall_time_s": 0.989750862121582,
+      "performance_component": 0.9089999999999999,
+      "cost_component": -0.11
+    },
+    "valid": true,
+    "note": ""
+  },
+  {
+    "candidate": {
+      "name": "adamw_momentum",
+      "grad_transform": "momentum",
+      "momentum_beta": 0.9,
+      "second_moment": "ema_sq",
+      "second_moment_beta": 0.999,
+      "normalization": "sqrt_eps",
+      "eps": 1e-08,
+      "bias_correction": true,
+      "weight_decay_mode": "decoupled",
+      "weight_decay": 0.05,
+      "lr": 0.003
+    },
+    "fitness_scalar": 0.7549999999999999,
+    "fitness_vector": {
+      "accuracy": 0.96,
+      "steps_to_target": 45,
+      "memory_cost": 2,
+      "compute_cost": 3,
+      "wall_time_s": 1.0509428977966309,
+      "performance_component": 0.9149999999999999,
+      "cost_component": -0.16
+    },
+    "valid": true,
+    "note": ""
+  },
+  {
+    "candidate": {
+      "name": "adamw_sign_momentum",
+      "grad_transform": "sign_momentum",
+      "momentum_beta": 0.9,
+      "second_moment": "ema_sq",
+      "second_moment_beta": 0.999,
+      "normalization": "sqrt_eps",
+      "eps": 1e-08,
+      "bias_correction": true,
+      "weight_decay_mode": "decoupled",
+      "weight_decay": 0.05,
+      "lr": 0.003
+    },
+    "fitness_scalar": -0.6140000000000001,
+    "fitness_vector": {
+      "accuracy": 0.113,
+      "steps_to_target": 567,
+      "memory_cost": 2,
+      "compute_cost": 3,
+      "wall_time_s": 1.0247550010681152,
+      "performance_component": -0.45400000000000007,
+      "cost_component": -0.16
+    },
+    "valid": true,
+    "note": ""
+  },
+  {
+    "candidate": {
+      "name": "rmsprop_adamw_coupled",
+      "grad_transform": "raw",
+      "momentum_beta": 0.9,
+      "second_moment": "ema_sq",
+      "second_moment_beta": 0.999,
+      "normalization": "sqrt_eps",
+      "eps": 1e-08,
+      "bias_correction": true,
+      "weight_decay_mode": "coupled",
+      "weight_decay": 0.05,
+      "lr": 0.003
+    },
+    "fitness_scalar": 0.622,
+    "fitness_vector": {
+      "accuracy": 0.788,
+      "steps_to_target": 56,
+      "memory_cost": 1,
+      "compute_cost": 3,
+      "wall_time_s": 0.9872539043426514,
+      "performance_component": 0.732,
+      "cost_component": -0.11
+    },
+    "valid": true,
+    "note": ""
+  },
+  {
+    "candidate": {
+      "name": "adamw_sign_momentum",
+      "grad_transform": "sign_momentum",
+      "momentum_beta": 0.9,
+      "second_moment": "ema_sq",
+      "second_moment_beta": 0.999,
+      "normalization": "sqrt_eps",
+      "eps": 1e-08,
+      "bias_correction": true,
+      "weight_decay_mode": "decoupled",
+      "weight_decay": 0.05,
+      "lr": 0.003
+    },
+    "fitness_scalar": -0.6140000000000001,
+    "fitness_vector": {
+      "accuracy": 0.113,
+      "steps_to_target": 567,
+      "memory_cost": 2,
+      "compute_cost": 3,
+      "wall_time_s": 1.0947051048278809,
+      "performance_component": -0.45400000000000007,
+      "cost_component": -0.16
+    },
+    "valid": true,
+    "note": ""
+  },
+  {
+    "candidate": {
+      "name": "adamw_sign_momentum",
+      "grad_transform": "sign_momentum",
+      "momentum_beta": 0.9,
+      "second_moment": "ema_sq",
+      "second_moment_beta": 0.999,
+      "normalization": "sqrt_eps",
+      "eps": 1e-08,
+      "bias_correction": true,
+      "weight_decay_mode": "decoupled",
+      "weight_decay": 0.05,
+      "lr": 0.003
+    },
+    "fitness_scalar": -0.6140000000000001,
+    "fitness_vector": {
+      "accuracy": 0.113,
+      "steps_to_target": 567,
+      "memory_cost": 2,
+      "compute_cost": 3,
+      "wall_time_s": 1.02347993850708,
+      "performance_component": -0.45400000000000007,
+      "cost_component": -0.16
+    },
+    "valid": true,
+    "note": ""
+  },
+  {
+    "candidate": {
+      "name": "adamw_sign_momentum",
+      "grad_transform": "sign_momentum",
+      "momentum_beta": 0.9,
+      "second_moment": "ema_sq",
+      "second_moment_beta": 0.999,
+      "normalization": "sqrt_eps",
+      "eps": 1e-08,
+      "bias_correction": true,
+      "weight_decay_mode": "decoupled",
+      "weight_decay": 0.05,
+      "lr": 0.01
+    },
+    "fitness_scalar": -0.6140000000000001,
+    "fitness_vector": {
+      "accuracy": 0.113,
+      "steps_to_target": 567,
+      "memory_cost": 2,
+      "compute_cost": 3,
+      "wall_time_s": 1.0956437587738037,
+      "performance_component": -0.45400000000000007,
+      "cost_component": -0.16
+    },
+    "valid": true,
+    "note": ""
+  },
+  {
+    "candidate": {
+      "name": "adamw_raw",
+      "grad_transform": "momentum",
+      "momentum_beta": 0.9,
+      "second_moment": "ema_sq",
+      "second_moment_beta": 0.999,
+      "normalization": "sqrt_eps",
+      "eps": 1e-08,
+      "bias_correction": true,
+      "weight_decay_mode": "decoupled",
+      "weight_decay": 0.05,
+      "lr": 0.003
+    },
+    "fitness_scalar": 0.7549999999999999,
+    "fitness_vector": {
+      "accuracy": 0.96,
+      "steps_to_target": 45,
+      "memory_cost": 2,
+      "compute_cost": 3,
+      "wall_time_s": 1.0666725635528564,
+      "performance_component": 0.9149999999999999,
+      "cost_component": -0.16
+    },
+    "valid": true,
+    "note": ""
+  },
+  {
+    "candidate": {
+      "name": "adamw_sign_momentum",
+      "grad_transform": "sign_momentum",
+      "momentum_beta": 0.9,
+      "second_moment": "ema_sq",
+      "second_moment_beta": 0.999,
+      "normalization": "sqrt_eps",
+      "eps": 1e-08,
+      "bias_correction": true,
+      "weight_decay_mode": "decoupled",
+      "weight_decay": 0.05,
+      "lr": 0.003
+    },
+    "fitness_scalar": -0.6140000000000001,
+    "fitness_vector": {
+      "accuracy": 0.113,
+      "steps_to_target": 567,
+      "memory_cost": 2,
+      "compute_cost": 3,
+      "wall_time_s": 1.091604471206665,
+      "performance_component": -0.45400000000000007,
+      "cost_component": -0.16
+    },
+    "valid": true,
+    "note": ""
+  },
+  {
+    "candidate": {
+      "name": "adamw_sign_momentum",
+      "grad_transform": "sign_momentum",
+      "momentum_beta": 0.9,
+      "second_moment": "ema_sq",
+      "second_moment_beta": 0.999,
+      "normalization": "sqrt_eps",
+      "eps": 1e-08,
+      "bias_correction": true,
+      "weight_decay_mode": "decoupled",
+      "weight_decay": 0.05,
+      "lr": 0.003
+    },
+    "fitness_scalar": -0.6140000000000001,
+    "fitness_vector": {
+      "accuracy": 0.113,
+      "steps_to_target": 567,
+      "memory_cost": 2,
+      "compute_cost": 3,
+      "wall_time_s": 1.0297644138336182,
+      "performance_component": -0.45400000000000007,
+      "cost_component": -0.16
+    },
+    "valid": true,
+    "note": ""
+  },
+  {
+    "candidate": {
+      "name": "adamw_momentum",
+      "grad_transform": "momentum",
+      "momentum_beta": 0.9,
+      "second_moment": "ema_sq",
+      "second_moment_beta": 0.999,
+      "normalization": "sqrt_eps",
+      "eps": 1e-08,
+      "bias_correction": true,
+      "weight_decay_mode": "decoupled",
+      "weight_decay": 0.05,
+      "lr": 0.01
+    },
+    "fitness_scalar": 0.7839999999999999,
+    "fitness_vector": {
+      "accuracy": 0.967,
+      "steps_to_target": 23,
+      "memory_cost": 2,
+      "compute_cost": 3,
+      "wall_time_s": 1.026017665863037,
+      "performance_component": 0.944,
+      "cost_component": -0.16
+    },
+    "valid": true,
+    "note": ""
+  },
+  {
+    "candidate": {
+      "name": "adam_raw_adamw",
+      "grad_transform": "momentum",
+      "momentum_beta": 0.9,
+      "second_moment": "ema_sq",
+      "second_moment_beta": 0.999,
+      "normalization": "sqrt_eps",
+      "eps": 1e-08,
+      "bias_correction": true,
+      "weight_decay_mode": "coupled",
+      "weight_decay": 0.05,
+      "lr": 0.01
+    },
+    "fitness_scalar": 0.703,
+    "fitness_vector": {
+      "accuracy": 0.919,
+      "steps_to_target": 56,
+      "memory_cost": 2,
+      "compute_cost": 3,
+      "wall_time_s": 1.0129139423370361,
+      "performance_component": 0.863,
+      "cost_component": -0.16
+    },
+    "valid": true,
+    "note": ""
+  }
+]

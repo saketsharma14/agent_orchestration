@@ -2,9 +2,17 @@
 baselines, on the same proxy task. This is the "something to show" script:
 run it after a search run and get a clean table for a write-up/slide.
 
+Each seed baseline is evaluated across its full search_space.seeds.SEED_LR_GRID
+and the best-scoring LR is reported, not one hand-picked LR -- evaluating
+sign-based (Lion) or un-normalized (SGD-momentum) updates at a single guessed
+LR is not a fair comparison to Adam-family optimizers and was the source of
+the misleading -9.3 numbers in the original report (feedback point 3). This
+mirrors what scripts/seed_lr_sweep.py already does; this script just also
+reports the discovered candidate against the *best* baseline per family in
+the same table, rather than needing a separate sweep script to cross-reference.
+
 Usage: python scripts/compare_baselines.py [path to archive_log.json]
 """
-
 from __future__ import annotations
 
 import json
@@ -15,7 +23,7 @@ REPO_ROOT = str(Path(__file__).resolve().parent.parent)
 sys.path.insert(0, REPO_ROOT)
 
 from search_space.dsl import OptimizerCandidate, render_optimizer_code
-from search_space.seeds import SEED_CANDIDATES
+from search_space.seeds import SEED_CANDIDATES, lr_sweep_variants
 from tasks.fitness import score
 
 ARCHIVE_PATH = sys.argv[1] if len(sys.argv) > 1 else str(Path(REPO_ROOT) / "archive_log.json")
@@ -39,10 +47,12 @@ def run_one(candidate: OptimizerCandidate) -> dict:
     optimizer_cls = namespace[class_name]
 
     from tasks.proxy_cnn import train_and_score
+
     metrics = train_and_score(optimizer_cls)
     fit = score(candidate, metrics)
     return {
         "name": candidate.name,
+        "lr": candidate.lr,
         "metrics": metrics,
         "fitness": fit.scalar,
         "performance_component": fit.vector.get("performance_component"),
@@ -50,9 +60,30 @@ def run_one(candidate: OptimizerCandidate) -> dict:
     }
 
 
+def run_best_of_lr_sweep(candidate: OptimizerCandidate) -> dict:
+    """Evaluate every LR in candidate's SEED_LR_GRID entry (or just its own
+    lr if it has no grid, e.g. a discovered candidate) and return the
+    best-scoring row. This is what makes the printed baseline table match
+    scripts/seed_lr_sweep.py's numbers instead of a single guessed LR."""
+    variants = lr_sweep_variants(candidate)
+    best_row = None
+    for variant in variants:
+        try:
+            row = run_one(variant)
+        except Exception as e:
+            row = {"name": variant.name, "lr": variant.lr, "metrics": None, "fitness": None, "error": str(e)}
+        if row.get("metrics") is None:
+            continue
+        if best_row is None or row["fitness"] > best_row["fitness"]:
+            best_row = row
+    return best_row if best_row is not None else {
+        "name": candidate.name, "lr": candidate.lr, "metrics": None, "fitness": None,
+        "error": "all LR variants failed or diverged",
+    }
+
+
 def main():
     candidates = list(SEED_CANDIDATES)  # Adam, AdamW, RMSprop, SGD-momentum, Lion
-
     best_discovered = load_best_discovered(ARCHIVE_PATH)
     if best_discovered is not None:
         best_discovered.name = "BEST_DISCOVERED_" + best_discovered.name
@@ -60,22 +91,17 @@ def main():
     else:
         print(f"(no valid entries found in {ARCHIVE_PATH} -- showing seed baselines only)\n")
 
-    rows = []
-    for cand in candidates:
-        try:
-            rows.append(run_one(cand))
-        except Exception as e:
-            rows.append({"name": cand.name, "metrics": None, "fitness": None, "error": str(e)})
+    rows = [run_best_of_lr_sweep(cand) for cand in candidates]
 
     header = (
-        f"{'name':32s} {'accuracy':>9s} {'steps_to_target':>16s} {'fitness':>9s} "
+        f"{'name':32s} {'lr':>10s} {'accuracy':>9s} {'steps_to_target':>16s} {'fitness':>9s} "
         f"{'perf_component':>15s} {'cost_component':>15s}"
     )
     print(header)
     print("-" * len(header))
     for r in rows:
         if r.get("metrics") is None:
-            print(f"{r['name']:32s} {'ERROR: ' + r.get('error', ''):>40s}")
+            print(f"{r['name']:32s} {'ERROR: ' + r.get('error', ''):>50s}")
             continue
         acc = r["metrics"]["accuracy"]
         steps = r["metrics"]["steps_to_target"]
@@ -84,9 +110,17 @@ def main():
         cost = r.get("cost_component")
         perf_s = f"{perf:.4f}" if perf is not None else "n/a"
         cost_s = f"{cost:.4f}" if cost is not None else "n/a"
-        print(f"{r['name']:32s} {acc:9.3f} {str(steps):>16s} {fit:9.4f} {perf_s:>15s} {cost_s:>15s}")
+        print(
+            f"{r['name']:32s} {r['lr']:>10.2e} {acc:9.3f} {str(steps):>16s} "
+            f"{fit:9.4f} {perf_s:>15s} {cost_s:>15s}"
+        )
+
     print(
-        "\nperf_component isolates task performance (accuracy + convergence "
+        "\nEach seed baseline shows its best LR from search_space.seeds.SEED_LR_GRID, "
+        "not one hand-picked LR (report feedback point 3)."
+    )
+    print(
+        "perf_component isolates task performance (accuracy + convergence "
         "speed); cost_component isolates the edge-cost proxy (memory + "
         "compute). A discovered candidate beating baselines mainly on "
         "cost_component is 'cheaper, comparably good' rather than "
