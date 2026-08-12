@@ -1,9 +1,0 @@
-Device: cpu  |  steps per candidate: 100
-Running on CPU is the closer proxy for genuinely edge-scale (mobile/embedded) hardware than the GPU numbers used during search -- see report Section 1.2/7 on what 'edge' meant there.
-
-name                              mean_ms/step  median_ms/step  extra_buffers
------------------------------------------------------------------------------
-adamw_seed                               4.155           3.500              2
-BEST_DISCOVERED_novel_adagrad_no_bias_correction         5.356           5.961              1
-
-Note: this is one machine's numbers, not a substitute for a Jetson/Raspberry-Pi measurement -- run this same script with --device cpu on that hardware for the number the 'edge-efficient' framing in the title needs (report feedback point 5).
